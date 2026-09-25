@@ -65,6 +65,7 @@ tools/
   measure.mjs         Lighthouse + browser checks for before and after -> results/
   interactions.mjs    menu, FAQ, form and anchor tests on the optimized page
   case-study.mjs      results/ -> site/index.html (no hand-typed numbers)
+  portfolio-images.mjs  results/ -> 1000x750 portfolio images (at 2x)
 results/              summary.json, full Lighthouse reports, screenshots
 ```
 
@@ -78,6 +79,7 @@ node tools/build.mjs
 node tools/measure.mjs --runs 3
 node tools/interactions.mjs
 node tools/case-study.mjs
+node tools/measure.mjs --live https://kulieff21.github.io/saas-landing-perf-demo   # optional: results/live/
 npx http-server site     # then open http://localhost:8080
 ```
 
