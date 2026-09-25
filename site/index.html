@@ -424,14 +424,14 @@
                                 <thead>
                                     <tr><th scope="col">Mobile metric</th><th scope="col">Original</th><th scope="col">Optimized</th><th scope="col">Change</th></tr>
                                 </thead>
-                                <tbody><tr><td>First Contentful Paint</td><td>4.2 s</td><td class="after">1.6 s</td><td class="delta">−63%</td></tr><tr><td>Largest Contentful Paint</td><td>6.7 s</td><td class="after">1.7 s</td><td class="delta">−74%</td></tr><tr><td>Speed Index</td><td>4.2 s</td><td class="after">1.6 s</td><td class="delta">−63%</td></tr><tr><td>Total Blocking Time</td><td>0 ms</td><td class="after">49 ms</td><td class="delta worse">+49 ms</td></tr><tr><td>Cumulative Layout Shift</td><td>0.006</td><td class="after">0.000</td><td class="delta">—</td></tr><tr><td>Transferred on load</td><td>1415 KB</td><td class="after">159 KB</td><td class="delta">−89%</td></tr><tr><td>Requests</td><td>32</td><td class="after">9</td><td class="delta">−72%</td></tr></tbody>
+                                <tbody><tr><td>First Contentful Paint</td><td>4.2 s</td><td class="after">1.6 s</td><td class="delta">−62%</td></tr><tr><td>Largest Contentful Paint</td><td>6.7 s</td><td class="after">1.7 s</td><td class="delta">−74%</td></tr><tr><td>Speed Index</td><td>4.2 s</td><td class="after">1.6 s</td><td class="delta">−62%</td></tr><tr><td>Total Blocking Time</td><td>0 ms</td><td class="after">28 ms</td><td class="delta worse">+28 ms</td></tr><tr><td>Cumulative Layout Shift</td><td>0.005</td><td class="after">0.000</td><td class="delta">—</td></tr><tr><td>Transferred on load</td><td>1415 KB</td><td class="after">159 KB</td><td class="delta">−89%</td></tr><tr><td>Requests</td><td>32</td><td class="after">9</td><td class="delta">−72%</td></tr></tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="bytes" aria-label="Where the bytes go on first load, mobile">
                         <h3>Where the bytes go on first load</h3>
-                        <div class="bytes-row"><span class="who">Original</span><div class="bar"><span style="width:75.36%;--c:#a855f7" data-label="Images 1066 KB"></span><span style="width:15.14%;--c:#54d2d0" data-label="Fonts 214 KB"></span><span style="width:3.18%;--c:#ffa400" data-label="JavaScript 45 KB"></span><span style="width:2.23%;--c:#f472b6" data-label="CSS 32 KB"></span><span style="width:3.74%;--c:#e4e4e7" data-label="HTML 53 KB"></span><span style="width:0.34%;--c:#52525b" data-label="Other 5 KB"></span></div><span class="total">1415 KB</span></div><div class="bytes-row"><span class="who">Optimized</span><div class="bar"><span style="width:2.48%;--c:#a855f7" data-label="Images 35 KB"></span><span style="width:2.79%;--c:#54d2d0" data-label="Fonts 39 KB"></span><span style="width:0.21%;--c:#ffa400" data-label="JavaScript 3 KB"></span><span style="width:5.67%;--c:#e4e4e7" data-label="HTML 80 KB"></span><span style="width:0.11%;--c:#52525b" data-label="Other 1 KB"></span></div><span class="total">159 KB</span></div>
+                        <div class="bytes-row"><span class="who">Original</span><div class="bar"><span style="width:75.36%;--c:#a855f7" data-label="Images 1066 KB"></span><span style="width:15.14%;--c:#54d2d0" data-label="Fonts 214 KB"></span><span style="width:3.18%;--c:#ffa400" data-label="JavaScript 45 KB"></span><span style="width:2.23%;--c:#f472b6" data-label="CSS 32 KB"></span><span style="width:3.74%;--c:#e4e4e7" data-label="HTML 53 KB"></span><span style="width:0.34%;--c:#52525b" data-label="Other 5 KB"></span></div><span class="total">1415 KB</span></div><div class="bytes-row"><span class="who">Optimized</span><div class="bar"><span style="width:2.48%;--c:#a855f7" data-label="Images 35 KB"></span><span style="width:2.79%;--c:#54d2d0" data-label="Fonts 39 KB"></span><span style="width:0.21%;--c:#ffa400" data-label="JavaScript 3 KB"></span><span style="width:5.66%;--c:#e4e4e7" data-label="HTML 80 KB"></span><span style="width:0.11%;--c:#52525b" data-label="Other 1 KB"></span></div><span class="total">159 KB</span></div>
                         <p class="bytes-hint" aria-hidden="true"></p>
                         <div class="bytes-legend"><span style="--c:#a855f7">Images 1066 → 35 KB</span><span style="--c:#54d2d0">Fonts 214 → 39 KB</span><span style="--c:#ffa400">JavaScript 45 → 3 KB</span><span style="--c:#f472b6">CSS 32 → 0 KB</span><span style="--c:#e4e4e7">HTML 53 → 80 KB</span><span style="--c:#52525b">Other 5 → 1 KB</span></div>
                     </div>
@@ -482,10 +482,10 @@
                 <div class="wrap">
                     <div class="section-head">
                         <span class="eyebrow">What changed</span>
-                        <h2 id="fixes-title">Eight problems, eight fixes</h2>
+                        <h2 id="fixes-title">Nine problems, nine fixes</h2>
                         <p class="muted">
-                            The first five show up in Lighthouse. The last three do not, and they are the ones a
-                            visitor notices first.
+                            The first five show up in a Lighthouse report. The other four only show up on a slow
+                            connection, with a keyboard, or on a careful read, and visitors notice them first.
                         </p>
                     </div>
                     <div class="fixes">
@@ -552,6 +552,19 @@
                                 <h3>A page search engines can read</h3>
                                 <p>Description, one <code>&lt;h1&gt;</code> and a logical heading order, working anchor links, Open Graph image.</p>
                                 <p class="effect">SEO score: 82 → 100</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>The first screen jumps on a slow connection</h3>
+                                <p>The hero image reserves no space. When it arrives late, the heading and buttons jump; on a fast local test the image is instant, so nothing looks wrong.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>Every image keeps its box</h3>
+                                <p>Images reserve their size from <code>width</code>/<code>height</code> before they load. Found on the live site, then reproduced by holding every image and font back 2.5 s.</p>
+                                <p class="effect">Layout shift with slow assets: 0.099 → 0.004</p>
                             </div>
                         </article>
                         <article class="fix">

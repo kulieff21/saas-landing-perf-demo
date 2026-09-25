@@ -1,62 +1,62 @@
 {
-  "date": "2026-09-25T11:03:53.913Z",
+  "date": "2026-09-25T10:54:15.489Z",
   "runs": 3,
-  "host": "local http-server",
+  "host": "https://kulieff21.github.io/saas-landing-perf-demo",
   "pages": {
     "before": {
       "url": "/before/index.html",
       "mobile": {
         "median": {
-          "performance": 67,
+          "performance": 69,
           "accessibility": 100,
           "best-practices": 100,
           "seo": 82,
-          "lcp": 6683.696664389901,
-          "fcp": 4199.158303899007,
+          "lcp": 5207.6997,
+          "fcp": 3872.193399999999,
           "tbt": 0,
-          "cls": 0.005373488869121225,
-          "si": 4199.158303899007,
-          "bytes": 1448481,
+          "cls": 0,
+          "si": 5191.219372222164,
+          "bytes": 1364030,
           "requests": 32
         },
         "runs": [
           {
-            "performance": 63,
+            "performance": 71,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 82,
-            "lcp": 7027.2379927786915,
-            "fcp": 4450.929927786914,
+            "lcp": 5136.683999999999,
+            "fcp": 3964.6260000000007,
+            "tbt": 10.5,
+            "cls": 0.005988693249263057,
+            "si": 4127.115399679724,
+            "bytes": 1364650,
+            "requests": 32
+          },
+          {
+            "performance": 69,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82,
+            "lcp": 5207.784600000001,
+            "fcp": 3872.193399999999,
             "tbt": 0,
             "cls": 0,
-            "si": 5690.167987207304,
-            "bytes": 1448859,
+            "si": 5232.855307667442,
+            "bytes": 1363885,
             "requests": 32
           },
           {
-            "performance": 67,
+            "performance": 69,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 82,
-            "lcp": 6683.696664389901,
-            "fcp": 4199.158303899007,
+            "lcp": 5207.6997,
+            "fcp": 3851.5776000000005,
             "tbt": 0,
-            "cls": 0.005823514010350222,
-            "si": 4199.158303899007,
-            "bytes": 1448476,
-            "requests": 32
-          },
-          {
-            "performance": 77,
-            "accessibility": 100,
-            "best-practices": 100,
-            "seo": 82,
-            "lcp": 5035.073321131682,
-            "fcp": 2195.0970633950456,
-            "tbt": 186,
-            "cls": 0.005373488869121225,
-            "si": 2195.0970633950456,
-            "bytes": 1448481,
+            "cls": 0,
+            "si": 5191.219372222164,
+            "bytes": 1364030,
             "requests": 32
           }
         ],
@@ -64,22 +64,22 @@
           {
             "id": "first-contentful-paint",
             "title": "First Contentful Paint",
-            "display": "4.5 s"
+            "display": "4.0 s"
           },
           {
             "id": "largest-contentful-paint",
             "title": "Largest Contentful Paint",
-            "display": "7.0 s"
+            "display": "5.1 s"
           },
           {
             "id": "speed-index",
             "title": "Speed Index",
-            "display": "5.7 s"
+            "display": "4.1 s"
           },
           {
             "id": "font-display-insight",
             "title": "Font display",
-            "display": "Est savings of 30 ms"
+            "display": "Est savings of 100 ms"
           },
           {
             "id": "forced-reflow-insight",
@@ -92,11 +92,6 @@
             "display": "Est savings of 937 KiB"
           },
           {
-            "id": "lcp-discovery-insight",
-            "title": "LCP request discovery",
-            "display": ""
-          },
-          {
             "id": "network-dependency-tree-insight",
             "title": "Network dependency tree",
             "display": ""
@@ -104,27 +99,22 @@
           {
             "id": "render-blocking-insight",
             "title": "Render blocking requests",
-            "display": "Est savings of 2,330 ms"
+            "display": "Est savings of 1,450 ms"
           },
           {
             "id": "interactive",
             "title": "Time to Interactive",
-            "display": "7.2 s"
+            "display": "5.4 s"
           },
           {
             "id": "render-blocking-resources",
             "title": "Eliminate render-blocking resources",
-            "display": "Est savings of 2,330 ms"
+            "display": "Est savings of 1,250 ms"
           },
           {
             "id": "uses-responsive-images",
             "title": "Properly size images",
             "display": "Est savings of 882 KiB"
-          },
-          {
-            "id": "offscreen-images",
-            "title": "Defer offscreen images",
-            "display": "Est savings of 742 KiB"
           },
           {
             "id": "unused-css-rules",
@@ -139,17 +129,17 @@
           {
             "id": "uses-rel-preconnect",
             "title": "Preconnect to required origins",
-            "display": "Est savings of 420 ms"
+            "display": "Est savings of 210 ms"
           },
           {
             "id": "mainthread-work-breakdown",
             "title": "Minimize main-thread work",
-            "display": "2.4 s"
+            "display": "2.6 s"
           },
           {
             "id": "largest-contentful-paint-element",
             "title": "Largest Contentful Paint element",
-            "display": "7,030 ms"
+            "display": "5,140 ms"
           },
           {
             "id": "unsized-images",
@@ -170,16 +160,16 @@
       },
       "desktop": {
         "median": {
-          "performance": 97,
+          "performance": 99,
           "accessibility": 100,
           "best-practices": 96,
           "seo": 82,
-          "lcp": 1150.421260312492,
-          "fcp": 763.7408015624601,
-          "tbt": 0,
-          "cls": 0.001018345725206628,
-          "si": 802.0664323522911,
-          "bytes": 1448481,
+          "lcp": 833.2260000000001,
+          "fcp": 663.3985999999999,
+          "tbt": 1,
+          "cls": 0.0009144042991921107,
+          "si": 875.6969588900886,
+          "bytes": 1363906,
           "requests": 32
         },
         "runs": [
@@ -188,38 +178,38 @@
             "accessibility": 100,
             "best-practices": 96,
             "seo": 82,
-            "lcp": 1013.0324344904345,
-            "fcp": 628.2218862260863,
-            "tbt": 0,
-            "cls": 0.0010017993510383117,
-            "si": 788.3153465916839,
-            "bytes": 1448473,
+            "lcp": 950.4453999999998,
+            "fcp": 772.4910999999998,
+            "tbt": 1,
+            "cls": 0.0009879508282588433,
+            "si": 1007.1332103731613,
+            "bytes": 1363902,
             "requests": 32
           },
           {
-            "performance": 97,
+            "performance": 99,
             "accessibility": 100,
             "best-practices": 96,
             "seo": 82,
-            "lcp": 1155.0875332060314,
-            "fcp": 776.1257942747083,
-            "tbt": 0,
-            "cls": 0.001018345725206628,
-            "si": 802.0664323522911,
-            "bytes": 1448481,
+            "lcp": 818.0944,
+            "fcp": 663.3985999999999,
+            "tbt": 4,
+            "cls": 0.0008843031943993031,
+            "si": 875.6969588900886,
+            "bytes": 1363984,
             "requests": 32
           },
           {
-            "performance": 97,
+            "performance": 99,
             "accessibility": 100,
             "best-practices": 96,
             "seo": 82,
-            "lcp": 1150.421260312492,
-            "fcp": 763.7408015624601,
+            "lcp": 833.2260000000001,
+            "fcp": 585.5626000000001,
             "tbt": 0,
-            "cls": 0.001018345725206628,
-            "si": 802.4112785217094,
-            "bytes": 1448486,
+            "cls": 0.0009144042991921107,
+            "si": 828.0547149612903,
+            "bytes": 1363906,
             "requests": 32
           }
         ],
@@ -227,7 +217,7 @@
           {
             "id": "font-display-insight",
             "title": "Font display",
-            "display": "Est savings of 50 ms"
+            "display": "Est savings of 100 ms"
           },
           {
             "id": "image-delivery-insight",
@@ -247,12 +237,12 @@
           {
             "id": "render-blocking-insight",
             "title": "Render blocking requests",
-            "display": "Est savings of 310 ms"
+            "display": ""
           },
           {
             "id": "render-blocking-resources",
             "title": "Eliminate render-blocking resources",
-            "display": "Est savings of 310 ms"
+            "display": "Est savings of 0 ms"
           },
           {
             "id": "uses-responsive-images",
@@ -320,68 +310,72 @@
         "hiddenBeforeScroll_noJs": {
           "hidden": 0,
           "total": 61
-        },
-        "slowAssetsCls": 0.099
+        }
       }
     },
     "after": {
       "url": "/after/index.html",
       "mobile": {
         "median": {
-          "performance": 99,
+          "performance": 90,
           "accessibility": 100,
           "best-practices": 100,
           "seo": 100,
-          "lcp": 1731.6060631999362,
-          "fcp": 1607.6060631999362,
-          "tbt": 27.651515799984054,
-          "cls": 0,
-          "si": 1607.6060631999362,
-          "bytes": 162980,
+          "lcp": 1631.1388,
+          "fcp": 1536.1388,
+          "tbt": 69,
+          "cls": 0.1902580078983716,
+          "si": 1911.2316566796949,
+          "bytes": 95525,
           "requests": 9
         },
         "runs": [
           {
-            "performance": 99,
+            "performance": 97,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100,
-            "lcp": 1731.6060631999362,
-            "fcp": 1607.6060631999362,
-            "tbt": 27.651515799984054,
+            "lcp": 1625.2795,
+            "fcp": 1429.2795,
+            "tbt": 48.5,
             "cls": 0,
-            "si": 1607.6060631999362,
-            "bytes": 162980,
+            "si": 4035.034335868167,
+            "bytes": 95572,
             "requests": 9
           },
           {
-            "performance": 99,
+            "performance": 90,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100,
-            "lcp": 1733.325416358019,
-            "fcp": 1630.325416358019,
-            "tbt": 27.08135408950477,
-            "cls": 0,
-            "si": 1630.325416358019,
-            "bytes": 162980,
+            "lcp": 1631.1388,
+            "fcp": 1536.1388,
+            "tbt": 69,
+            "cls": 0.1902580078983716,
+            "si": 1536.1388,
+            "bytes": 95484,
             "requests": 9
           },
           {
-            "performance": 99,
+            "performance": 77,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100,
-            "lcp": 1730.0858370699193,
-            "fcp": 1590.0858370699193,
-            "tbt": 34.77145926747983,
-            "cls": 0,
-            "si": 1590.0858370699193,
-            "bytes": 162980,
+            "lcp": 2230.0860000000002,
+            "fcp": 1768.086,
+            "tbt": 457.5000000000002,
+            "cls": 0.1902580078983716,
+            "si": 1911.2316566796949,
+            "bytes": 95525,
             "requests": 9
           }
         ],
         "failing": [
+          {
+            "id": "speed-index",
+            "title": "Speed Index",
+            "display": "4.0 s"
+          },
           {
             "id": "image-delivery-insight",
             "title": "Improve image delivery",
@@ -395,7 +389,7 @@
           {
             "id": "max-potential-fid",
             "title": "Max Potential First Input Delay",
-            "display": "200 ms"
+            "display": "150 ms"
           }
         ]
       },
@@ -405,26 +399,26 @@
           "accessibility": 100,
           "best-practices": 100,
           "seo": 100,
-          "lcp": 426.88634187435287,
-          "fcp": 380.49131995122787,
+          "lcp": 458.1815,
+          "fcp": 413.1815,
           "tbt": 0,
           "cls": 0,
-          "si": 380.49131995122787,
-          "bytes": 197486,
+          "si": 448.02733046244725,
+          "bytes": 130102,
           "requests": 10
         },
         "runs": [
           {
-            "performance": 100,
+            "performance": 98,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100,
-            "lcp": 426.88634187435287,
-            "fcp": 387.88634187435287,
+            "lcp": 572.0648,
+            "fcp": 537.5648,
             "tbt": 0,
-            "cls": 0,
-            "si": 387.88634187435287,
-            "bytes": 197486,
+            "cls": 0.09053116159187818,
+            "si": 537.5648,
+            "bytes": 130081,
             "requests": 10
           },
           {
@@ -432,12 +426,12 @@
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100,
-            "lcp": 426.93923318467745,
-            "fcp": 376.93923318467745,
+            "lcp": 411.6116,
+            "fcp": 367.6116,
             "tbt": 0,
             "cls": 0,
-            "si": 376.93923318467745,
-            "bytes": 197486,
+            "si": 409.20292249131273,
+            "bytes": 130117,
             "requests": 10
           },
           {
@@ -445,12 +439,12 @@
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100,
-            "lcp": 424.49131995122787,
-            "fcp": 380.49131995122787,
-            "tbt": 0,
+            "lcp": 458.1815,
+            "fcp": 413.1815,
+            "tbt": 3,
             "cls": 0,
-            "si": 380.49131995122787,
-            "bytes": 197486,
+            "si": 448.02733046244725,
+            "bytes": 130102,
             "requests": 10
           }
         ],
@@ -485,7 +479,7 @@
           "consoleErrors": [],
           "overflowX": 0,
           "hiddenBeforeScroll": {
-            "hidden": 64,
+            "hidden": 63,
             "total": 77
           }
         },
@@ -496,8 +490,7 @@
         "hiddenBeforeScroll_noJs": {
           "hidden": 0,
           "total": 77
-        },
-        "slowAssetsCls": 0.004
+        }
       }
     }
   }

@@ -158,6 +158,8 @@ const values = {
     hiddenTotalB: B.checks.desktop.hiddenBeforeScroll.total,
     hiddenRmB: B.checks.hiddenBeforeScroll_reducedMotion.hidden,
     hiddenRmA: A.checks.hiddenBeforeScroll_reducedMotion.hidden,
+    slowClsB: B.checks.slowAssetsCls.toFixed(3),
+    slowClsA: A.checks.slowAssetsCls.toFixed(3),
     gaugesMobile: gauges('mobile'),
     gaugesDesktop: gauges('desktop'),
     metricRows,

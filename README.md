@@ -23,7 +23,7 @@ Both versions served by the same local static server.
 | SEO | 82 | **100** |
 | Largest Contentful Paint | 6.7 s | **1.7 s** |
 | First Contentful Paint | 4.2 s | **1.6 s** |
-| Total Blocking Time | 0 ms | 49 ms |
+| Total Blocking Time | 0 ms | 28 ms |
 | Transferred on load | 1415 KB | **159 KB** |
 | Requests | 32 | **9** |
 
@@ -42,6 +42,7 @@ runs so far); the gap between the two versions does not.
 | Ubuntu in 8 styles + an unused Dancing Script family; 128 KB icon font for 18 icons | 3 self-hosted Ubuntu weights, subset to Latin-1 without hinting (39 KB); icons inlined as SVG |
 | GSAP + ScrollTrigger from a CDN for fade-ins and the hero tilt | `IntersectionObserver` + a CSS scroll-driven animation; no third-party requests |
 | Empty meta description, no `<h1>`, `href=""` links, empty Open Graph tags | Description, one `<h1>`, logical headings, working anchors, OG image |
+| Hero image reserves no space: with images and fonts 2.5 s late, layout shift (CLS) 0.099 | Images keep their box from `width`/`height`: CLS 0.004 under the same delay |
 | 56 of 61 text/image elements invisible until scrolled, also with reduced motion | Visible by default; fade-ins only when JS has loaded and reduced motion is off |
 | FAQ made of `<div>`s, closed mobile menu still focusable, unlabeled email input | Buttons with `aria-expanded`, hidden closed menu (Escape closes it), labelled form, skip link, focus styles |
 | Lorem ipsum, real company logos under "Trusted by", invented testimonials | Copy for a clearly labelled fictional product; the testimonial grid became a "who it's for" grid |

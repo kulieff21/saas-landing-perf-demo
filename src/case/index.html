@@ -482,10 +482,10 @@
                 <div class="wrap">
                     <div class="section-head">
                         <span class="eyebrow">What changed</span>
-                        <h2 id="fixes-title">Eight problems, eight fixes</h2>
+                        <h2 id="fixes-title">Nine problems, nine fixes</h2>
                         <p class="muted">
-                            The first five show up in Lighthouse. The last three do not, and they are the ones a
-                            visitor notices first.
+                            The first five show up in a Lighthouse report. The other four only show up on a slow
+                            connection, with a keyboard, or on a careful read, and visitors notice them first.
                         </p>
                     </div>
                     <div class="fixes">
@@ -552,6 +552,19 @@
                                 <h3>A page search engines can read</h3>
                                 <p>Description, one <code>&lt;h1&gt;</code> and a logical heading order, working anchor links, Open Graph image.</p>
                                 <p class="effect">SEO score: {{mSeoB}} → {{mSeoA}}</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>The first screen jumps on a slow connection</h3>
+                                <p>The hero image reserves no space. When it arrives late, the heading and buttons jump; on a fast local test the image is instant, so nothing looks wrong.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>Every image keeps its box</h3>
+                                <p>Images reserve their size from <code>width</code>/<code>height</code> before they load. Found on the live site, then reproduced by holding every image and font back 2.5 s.</p>
+                                <p class="effect">Layout shift with slow assets: {{slowClsB}} → {{slowClsA}}</p>
                             </div>
                         </article>
                         <article class="fix">

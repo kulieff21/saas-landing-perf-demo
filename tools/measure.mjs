@@ -1,6 +1,9 @@
 // Measures site/before/ and site/after/ the same way and writes results/.
 //
-//   node tools/measure.mjs [--runs 3] [--no-lighthouse] [--no-shots]
+//   node tools/measure.mjs [--runs 3] [--no-lighthouse] [--no-shots] [--live <base url>]
+//
+// --live measures the deployed pages instead (real host: compression, CDN) and writes
+// results/live/ without touching the local results the case study is built from.
 //
 // Both pages are served by the same local static server (no compression,
 // Cache-Control: no-store), so server-level audits are identical on both sides
@@ -21,20 +24,21 @@ const LIGHTHOUSE = !args.includes('--no-lighthouse');
 const SHOTS = !args.includes('--no-shots');
 const CHROME = process.env.CHROME_PATH || 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const PORT = 8820;
+const LIVE = opt('live', null)?.replace(/\/$/, '');
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const results = path.join(root, 'results');
+const results = LIVE ? path.join(root, 'results', 'live') : path.join(root, 'results');
 const shotsDir = path.join(results, 'screenshots');
 fs.mkdirSync(shotsDir, { recursive: true });
 
 const PAGES = { before: '/before/index.html', after: '/after/index.html' };
 const SERVER_AUDITS = new Set(['uses-text-compression', 'uses-long-cache-ttl', 'bf-cache', 'cache-insight', 'document-latency-insight']);
 
-const server = spawn(process.execPath, [resolve('http-server/bin/http-server'), path.join(root, 'site'), '-p', String(PORT), '-s', '-c-1']);
+const server = LIVE ? null : spawn(process.execPath, [resolve('http-server/bin/http-server'), path.join(root, 'site'), '-p', String(PORT), '-s', '-c-1']);
 await new Promise((r) => setTimeout(r, 1500));
-const url = (p) => `http://localhost:${PORT}${p}`;
+const url = (p) => (LIVE ? `${LIVE}${p.replace(/index\.html$/, '')}` : `http://localhost:${PORT}${p}`);
 
-const summary = { date: new Date().toISOString(), runs: RUNS, pages: {} };
+const summary = { date: new Date().toISOString(), runs: RUNS, host: LIVE || 'local http-server', pages: {} };
 const median = (xs) => {
     const s = [...xs].sort((a, b) => a - b);
     return s.length % 2 ? s[(s.length - 1) / 2] : (s[s.length / 2 - 1] + s[s.length / 2]) / 2;
@@ -151,11 +155,29 @@ for (const [pageName, p] of Object.entries(PAGES)) {
         checks[`hiddenBeforeScroll_${mode}`] = await page.evaluate(hiddenCount);
         await page.close();
     }
+    // Layout shift when images and fonts arrive late (a cold CDN, a slow phone): every
+    // image and font is held back 2.5 s, CLS is summed from PerformanceObserver.
+    {
+        const page = await browser.newPage();
+        await page.setViewport({ width: 412, height: 823, isMobile: true, hasTouch: true, deviceScaleFactor: 1.75 });
+        await page.setRequestInterception(true);
+        page.on('request', (r) => (/\.(avif|webp|png|jpe?g|svg|woff2?)(\?|$)/.test(r.url()) ? setTimeout(() => r.continue(), 2500) : r.continue()));
+        await page.evaluateOnNewDocument(() => {
+            window.__cls = 0;
+            new PerformanceObserver((list) => {
+                for (const e of list.getEntries()) if (!e.hadRecentInput) window.__cls += e.value;
+            }).observe({ type: 'layout-shift', buffered: true });
+        });
+        await page.goto(url(p), { waitUntil: 'networkidle0', timeout: 90000 });
+        await new Promise((r) => setTimeout(r, 1000));
+        checks.slowAssetsCls = Number((await page.evaluate(() => window.__cls)).toFixed(3));
+        await page.close();
+    }
     summary.pages[pageName].checks = checks;
     console.log(pageName, JSON.stringify(checks));
 }
 await browser.close();
-server.kill();
+server?.kill();
 
 if (LIGHTHOUSE) fs.writeFileSync(path.join(results, 'summary.json'), JSON.stringify(summary, null, 2) + '\n');
 process.exit(0);
