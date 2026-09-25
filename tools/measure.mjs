@@ -112,7 +112,7 @@ const scrollThrough = async (page) =>
     });
 
 const VIEWPORTS = {
-    desktop: { width: 1440, height: 900 },
+    desktop: { width: 1440, height: 900, deviceScaleFactor: 2 },
     mobile: { width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 },
 };
 for (const [pageName, p] of Object.entries(PAGES)) {
@@ -128,7 +128,8 @@ for (const [pageName, p] of Object.entries(PAGES)) {
         await page.goto(url(p), { waitUntil: 'networkidle0', timeout: 60000 });
         await new Promise((r) => setTimeout(r, 1200));
         const hiddenBeforeScroll = await page.evaluate(hiddenCount);
-        if (SHOTS) await page.screenshot({ path: path.join(shotsDir, `${pageName}-${vpName}.jpg`), type: 'jpeg', quality: 80 });
+        // First-screen shots are lossless at 2x; the case study encodes them once, from the PNG.
+        if (SHOTS) await page.screenshot({ path: path.join(shotsDir, `${pageName}-${vpName}.png`), type: 'png' });
         await scrollThrough(page);
         if (SHOTS) {
             await page.setViewport({ ...vp, deviceScaleFactor: vpName === 'desktop' ? 0.5 : 1 });

@@ -38,17 +38,17 @@ fs.rmSync(assets, { recursive: true, force: true });
 fs.mkdirSync(assets, { recursive: true });
 const shots = {};
 for (const [name, widths] of [
-    ['before-desktop', [720, 1200]],
-    ['after-desktop', [720, 1200]],
-    ['before-mobile', [280, 560]],
-    ['after-mobile', [280, 560]],
+    ['before-desktop', [900, 1350, 1800, 2400]],
+    ['after-desktop', [900, 1350, 1800, 2400]],
+    ['before-mobile', [280, 560, 780]],
+    ['after-mobile', [280, 560, 780]],
 ]) {
-    const input = path.join(results, 'screenshots', `${name}.jpg`);
+    const input = path.join(results, 'screenshots', `${name}.png`);
     const meta = await sharp(input).metadata();
-    for (const w of widths) await sharp(input).resize(w).webp({ quality: 80 }).toFile(path.join(assets, `${name}-${w}.webp`));
+    for (const w of widths) await sharp(input).resize(w).webp({ quality: 90, smartSubsample: true }).toFile(path.join(assets, `${name}-${w}.webp`));
     const big = widths.at(-1);
     const h = Math.round((meta.height * big) / meta.width);
-    const sizes = name.endsWith('desktop') ? '(max-width: 860px) 100vw, 548px' : '(max-width: 700px) 42vw, 280px';
+    const sizes = name.endsWith('desktop') ? '(max-width: 900px) 100vw, 860px' : '(max-width: 700px) 42vw, 280px';
     const label = name.startsWith('before') ? 'Original SaaSyDark template' : 'Optimized Dashdark page';
     const view = name.endsWith('desktop') ? 'desktop, 1440 px wide' : 'mobile, 390 px wide';
     shots[name] =

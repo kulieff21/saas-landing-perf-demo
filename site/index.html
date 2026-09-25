@@ -13,7 +13,7 @@
         <meta property="og:title" content="SaaS landing page: 67 → 99 on mobile Lighthouse" />
         <meta property="og:description" content="Same design, 89% lighter. A before/after front-end performance case study." />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="./case-assets/after-desktop-1200.webp" />
+        <meta property="og:image" content="./case-assets/after-desktop-1350.webp" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="preload" href="./after/assets/fonts/ubuntu-latin-700.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="./after/assets/fonts/ubuntu-latin-400.woff2" as="font" type="font/woff2" crossorigin />
@@ -270,7 +270,7 @@
             .bytes-hint { min-height: 1.4em; font-size: 0.9rem; color: #d8b4fe; }
 
             /* compare slider */
-            .slider { margin: 0; display: grid; gap: 12px; }
+            .slider { margin: 0 auto; display: grid; gap: 12px; max-width: 860px; }
             .stage { position: relative; aspect-ratio: 1440 / 900; overflow: hidden; background: #000; }
             .stage .layer { position: absolute; inset: 0; }
             .stage .layer img { width: 100%; height: 100%; object-fit: cover; }
@@ -365,7 +365,7 @@
                     </div>
                    </div>
                    <div class="hero-visual" aria-hidden="true">
-                    <div class="browser"><div class="chrome"><i></i><i></i><i></i></div><img src="./case-assets/after-desktop-720.webp" srcset="./case-assets/after-desktop-720.webp 720w, ./case-assets/after-desktop-1200.webp 1200w" sizes="540px" width="1200" height="750" fetchpriority="high" decoding="async" alt="Optimized Dashdark page, first screen on desktop, 1440 px wide"></div>
+                    <div class="browser"><div class="chrome"><i></i><i></i><i></i></div><img src="./case-assets/after-desktop-900.webp" srcset="./case-assets/after-desktop-900.webp 900w, ./case-assets/after-desktop-1350.webp 1350w, ./case-assets/after-desktop-1800.webp 1800w, ./case-assets/after-desktop-2400.webp 2400w" sizes="540px" width="2400" height="1500" fetchpriority="high" decoding="async" alt="Optimized Dashdark page, first screen on desktop, 1440 px wide"></div>
                     <span class="badge">Mobile Lighthouse <b>99</b></span>
                    </div>
                   </div>
@@ -450,8 +450,8 @@
                         <div class="browser">
                             <div class="chrome"><i></i><i></i><i></i><span class="slider-hint">Drag to compare</span></div>
                             <div class="stage">
-                                <div class="layer after"><img src="./case-assets/after-desktop-720.webp" srcset="./case-assets/after-desktop-720.webp 720w, ./case-assets/after-desktop-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 548px" width="1200" height="750" loading="lazy" decoding="async" alt="Optimized Dashdark page, first screen on desktop, 1440 px wide"></div>
-                                <div class="layer before"><img src="./case-assets/before-desktop-720.webp" srcset="./case-assets/before-desktop-720.webp 720w, ./case-assets/before-desktop-1200.webp 1200w" sizes="(max-width: 860px) 100vw, 548px" width="1200" height="750" loading="lazy" decoding="async" alt="Original SaaSyDark template, first screen on desktop, 1440 px wide"></div>
+                                <div class="layer after"><img src="./case-assets/after-desktop-900.webp" srcset="./case-assets/after-desktop-900.webp 900w, ./case-assets/after-desktop-1350.webp 1350w, ./case-assets/after-desktop-1800.webp 1800w, ./case-assets/after-desktop-2400.webp 2400w" sizes="(max-width: 900px) 100vw, 860px" width="2400" height="1500" loading="lazy" decoding="async" alt="Optimized Dashdark page, first screen on desktop, 1440 px wide"></div>
+                                <div class="layer before"><img src="./case-assets/before-desktop-900.webp" srcset="./case-assets/before-desktop-900.webp 900w, ./case-assets/before-desktop-1350.webp 1350w, ./case-assets/before-desktop-1800.webp 1800w, ./case-assets/before-desktop-2400.webp 2400w" sizes="(max-width: 900px) 100vw, 860px" width="2400" height="1500" loading="lazy" decoding="async" alt="Original SaaSyDark template, first screen on desktop, 1440 px wide"></div>
                                 <span class="tag tag-before">Original</span>
                                 <span class="tag tag-after">Optimized</span>
                                 <input type="range" min="0" max="100" value="50" step="0.5" aria-label="Compare: slide left for the optimized page, right for the original" />
@@ -465,11 +465,11 @@
                     </figure>
                     <div class="phones">
                         <figure class="phone">
-                            <div class="frame"><img src="./case-assets/before-mobile-280.webp" srcset="./case-assets/before-mobile-280.webp 280w, ./case-assets/before-mobile-560.webp 560w" sizes="(max-width: 700px) 42vw, 280px" width="560" height="1212" loading="lazy" decoding="async" alt="Original SaaSyDark template, first screen on mobile, 390 px wide"></div>
+                            <div class="frame"><img src="./case-assets/before-mobile-280.webp" srcset="./case-assets/before-mobile-280.webp 280w, ./case-assets/before-mobile-560.webp 560w, ./case-assets/before-mobile-780.webp 780w" sizes="(max-width: 700px) 42vw, 280px" width="780" height="1688" loading="lazy" decoding="async" alt="Original SaaSyDark template, first screen on mobile, 390 px wide"></div>
                             <figcaption><b>Original</b><br />mobile score 67</figcaption>
                         </figure>
                         <figure class="phone">
-                            <div class="frame"><img src="./case-assets/after-mobile-280.webp" srcset="./case-assets/after-mobile-280.webp 280w, ./case-assets/after-mobile-560.webp 560w" sizes="(max-width: 700px) 42vw, 280px" width="560" height="1212" loading="lazy" decoding="async" alt="Optimized Dashdark page, first screen on mobile, 390 px wide"></div>
+                            <div class="frame"><img src="./case-assets/after-mobile-280.webp" srcset="./case-assets/after-mobile-280.webp 280w, ./case-assets/after-mobile-560.webp 560w, ./case-assets/after-mobile-780.webp 780w" sizes="(max-width: 700px) 42vw, 280px" width="780" height="1688" loading="lazy" decoding="async" alt="Optimized Dashdark page, first screen on mobile, 390 px wide"></div>
                             <figcaption><b>Optimized</b><br />mobile score 99</figcaption>
                         </figure>
                     </div>
