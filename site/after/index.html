@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashdark: revenue and product analytics for SaaS teams (demo)</title>
+        <meta
+            name="description"
+            content="Dashdark is a fictional SaaS analytics product, built as a portfolio demo: signups, subscriptions and revenue in one dashboard. Page optimized from the open-source SaaSyDark template."
+        />
+        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="./assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+        <link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png" />
+
+        <meta property="og:title" content="Dashdark: revenue and product analytics (portfolio demo)" />
+        <meta
+            property="og:description"
+            content="A fictional SaaS landing page, rebuilt from an open-source template for speed, accessibility and SEO."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="./assets/img/og.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <link rel="preload" href="./assets/fonts/ubuntu-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="./assets/fonts/ubuntu-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+
+        <style>@font-face{font-family:Ubuntu;font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/ubuntu-latin-400.woff2) format("woff2")}@font-face{font-family:Ubuntu;font-style:normal;font-weight:500;font-display:swap;src:url(assets/fonts/ubuntu-latin-500.woff2) format("woff2")}@font-face{font-family:Ubuntu;font-style:normal;font-weight:600 700;font-display:swap;src:url(assets/fonts/ubuntu-latin-700.woff2) format("woff2")}*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }
+
+/*! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.tw-absolute{position:absolute}.tw-relative{position:relative}.tw-left-\[20\%\]{left:20%}.tw-right-3{right:.75rem}.tw-top-2{top:.5rem}.tw-top-5{top:1.25rem}.tw-top-\[36px\]{top:36px}.tw-z-10{z-index:10}.tw-z-20{z-index:20}.tw-z-50{z-index:50}.tw-mx-4{margin-left:1rem;margin-right:1rem}.tw-mt-10{margin-top:2.5rem}.tw-mt-2{margin-top:.5rem}.tw-mt-20{margin-top:5rem}.tw-mt-3{margin-top:.75rem}.tw-mt-4{margin-top:1rem}.tw-mt-5{margin-top:1.25rem}.tw-mt-6{margin-top:1.5rem}.tw-mt-8{margin-top:2rem}.tw-mt-auto{margin-top:auto}.tw-flex{display:flex}.tw-inline-flex{display:inline-flex}.tw-h-\[120px\]{height:120px}.tw-h-\[200px\]{height:200px}.tw-h-\[250px\]{height:250px}.tw-h-\[50px\]{height:50px}.tw-h-\[60px\]{height:60px}.tw-h-full{height:100%}.tw-max-h-\[650px\]{max-height:650px}.tw-min-h-\[100vh\]{min-height:100vh}.tw-min-h-\[300px\]{min-height:300px}.tw-min-h-\[400px\]{min-height:400px}.tw-min-h-\[60vh\]{min-height:60vh}.tw-min-h-\[80vh\]{min-height:80vh}.\!tw-w-full{width:100%!important}.tw-w-\[120px\]{width:120px}.tw-w-\[200px\]{width:200px}.tw-w-\[250px\]{width:250px}.tw-w-\[380px\]{width:380px}.tw-w-\[50px\]{width:50px}.tw-w-full{width:100%}.tw-w-max{width:-moz-max-content;width:max-content}.tw-max-w-\[100vw\]{max-width:100vw}.tw-max-w-\[1240px\]{max-width:1240px}.tw-max-w-\[450px\]{max-width:450px}.tw-max-w-\[520px\]{max-width:520px}.tw-max-w-\[80\%\]{max-width:80%}.tw-max-w-\[850px\]{max-width:850px}.tw-shrink-0{flex-shrink:0}.tw-flex-col{flex-direction:column}.tw-flex-wrap{flex-wrap:wrap}.tw-place-content-center{place-content:center}.tw-place-content-around{place-content:space-around}.tw-place-items-end{place-items:end}.tw-place-items-center{place-items:center}.tw-items-center{align-items:center}.tw-justify-between{justify-content:space-between}.tw-gap-1{gap:.25rem}.tw-gap-10{gap:2.5rem}.tw-gap-2{gap:.5rem}.tw-gap-3{gap:.75rem}.tw-gap-4{gap:1rem}.tw-gap-5{gap:1.25rem}.tw-gap-6{gap:1.5rem}.tw-gap-8{gap:2rem}.tw-gap-\[10\%\]{gap:10%}.tw-gap-\[20px\]{gap:20px}.tw-space-y-8>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem*var(--tw-space-y-reverse))}.tw-overflow-hidden{overflow:hidden}.\!tw-rounded-full{border-radius:9999px!important}.tw-rounded-full{border-radius:9999px}.tw-rounded-lg{border-radius:.5rem}.tw-rounded-md{border-radius:.375rem}.tw-rounded-xl{border-radius:.75rem}.\!tw-border-\[1px\]{border-width:1px!important}.tw-border-2{border-width:2px}.tw-border-\[1px\]{border-width:1px}.\!tw-border-solid{border-style:solid!important}.\!tw-border-gray-300{--tw-border-opacity:1!important;border-color:rgb(209 213 219/var(--tw-border-opacity,1))!important}.\!tw-border-gray-600{--tw-border-opacity:1!important;border-color:rgb(75 85 99/var(--tw-border-opacity,1))!important}.tw-border-outlineColor{--tw-border-opacity:1;border-color:rgb(31 33 35/var(--tw-border-opacity,1))}.tw-border-primary{--tw-border-opacity:1;border-color:rgb(126 34 206/var(--tw-border-opacity,1))}.\!tw-bg-black{--tw-bg-opacity:1!important;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))!important}.\!tw-bg-transparent{background-color:transparent!important}.tw-bg-\[\#7e22ce\]{--tw-bg-opacity:1;background-color:rgb(126 34 206/var(--tw-bg-opacity,1))}.tw-bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.tw-bg-secondary{--tw-bg-opacity:1;background-color:rgb(8 8 8/var(--tw-bg-opacity,1))}.tw-bg-transparent{background-color:transparent}.tw-bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.tw-bg-opacity-0{--tw-bg-opacity:0}.tw-object-contain{-o-object-fit:contain;object-fit:contain}.tw-object-cover{-o-object-fit:cover;object-fit:cover}.tw-p-2{padding:.5rem}.tw-p-6{padding:1.5rem}.tw-p-\[2\%\]{padding:2%}.tw-p-\[4px\]{padding:4px}.tw-p-\[5\%\]{padding:5%}.tw-px-3{padding-left:.75rem;padding-right:.75rem}.tw-px-\[10\%\]{padding-left:10%;padding-right:10%}.tw-px-\[5\%\]{padding-left:5%;padding-right:5%}.tw-py-2{padding-top:.5rem;padding-bottom:.5rem}.tw-text-center{text-align:center}.tw-text-2xl{font-size:1.5rem;line-height:2rem}.tw-text-3xl{font-size:1.875rem;line-height:2.25rem}.tw-text-4xl{font-size:2.25rem;line-height:2.5rem}.tw-text-5xl{font-size:3rem;line-height:1}.tw-text-6xl{font-size:3.75rem;line-height:1}.tw-text-7xl{font-size:4.5rem;line-height:1}.tw-text-base{font-size:1rem;line-height:1.5rem}.tw-text-lg{font-size:1.125rem;line-height:1.75rem}.tw-text-sm{font-size:.875rem;line-height:1.25rem}.tw-font-medium{font-weight:500}.tw-font-normal{font-weight:400}.tw-font-semibold{font-weight:600}.tw-uppercase{text-transform:uppercase}.tw-leading-\[80px\]{line-height:80px}.\!tw-text-white{--tw-text-opacity:1!important;color:rgb(255 255 255/var(--tw-text-opacity,1))!important}.tw-text-black{--tw-text-opacity:1;color:rgb(0 0 0/var(--tw-text-opacity,1))}.tw-text-gray-200{--tw-text-opacity:1;color:rgb(229 231 235/var(--tw-text-opacity,1))}.tw-text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219/var(--tw-text-opacity,1))}.tw-text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175/var(--tw-text-opacity,1))}.tw-text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.tw-underline{text-decoration-line:underline}.tw-opacity-90{opacity:.9}.tw-shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.tw-shadow-\[rgba\(170\,49\,233\,0\.44\)\]{--tw-shadow-color:rgba(170,49,233,.44);--tw-shadow:var(--tw-shadow-colored)}.tw-shadow-primary{--tw-shadow-color:#7e22ce;--tw-shadow:var(--tw-shadow-colored)}.tw-transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.tw-transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.tw-duration-\[0\.3s\]{transition-duration:.3s}:root{--bg-color:#000;--btn-color:#fdfdfd;--btn-bg:#7e22ce;--primary-text-color:#7e22ce;--input-hover-bd-color:#a855f7}html{scroll-behavior:smooth;font-family:Ubuntu,system-ui,-apple-system,Segoe UI,sans-serif}:focus-visible{outline:2px solid #c084fc;outline-offset:3px}.bi{display:inline-block;width:1em;height:1em;vertical-align:-.125em;flex-shrink:0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip-link{position:absolute;left:1rem;top:-100px;z-index:100;padding:8px 14px;border-radius:6px;background:#fff;color:#000}.skip-link:focus{top:44px}.demo-bar{position:relative;z-index:30;display:flex;justify-content:center;align-items:center;gap:12px;height:36px;padding:0 16px;white-space:nowrap;overflow:hidden;font-size:.8125rem;line-height:1.4;color:#d8b4fe;background:#12051f;border-bottom:1px solid #2e1065;text-align:center}.demo-bar a{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:underline;text-underline-offset:3px}header{color:#b1b1b1}header>.collapsible-header{display:flex;gap:1rem;width:100%;background-color:inherit;place-content:center;overflow:hidden;transition:width .3s ease}.header-links{display:flex;align-items:center;min-width:-moz-fit-content;min-width:fit-content;border-radius:5px;padding:5px 10px;transition:color .3s}.header-links:hover{color:#fff}.gradient-text{background:linear-gradient(90deg,#d7d7d7 18%,#888 71%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}.hero-img-bg-grad{background:linear-gradient(90deg,#7e22ce91 8%,#625aafae 31%,#7badbbbc 76%,#54d2d0ca 89%);filter:blur(50px);opacity:.5}@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:scroll()){#dashboard{animation:dashboard-straighten linear both;animation-timeline:scroll(root);animation-range:0 45vh}#dashboard:hover{box-shadow:0 15px 25px -5px #7e22ceaa}}}@keyframes dashboard-straighten{0%{transform:perspective(1400px) scale(.95) rotateX(14deg);box-shadow:none}to{transform:none;box-shadow:0 15px 25px -5px #7e22ceaa}}.border-gradient{background:linear-gradient(180deg,#dbd7d5 35%,#d6d3e900 71%);padding:2px;border-radius:10px}.border-gradient>div{background-color:var(--bg-color);border-radius:inherit}.btn{padding:10px 15px;width:-moz-max-content;width:max-content;color:var(--btn-color);background-color:var(--btn-bg);justify-content:center;align-items:center;display:flex;cursor:pointer}.btn,.input{border-radius:5px}.input{padding:10px;background-color:transparent;min-width:100px;border:1px solid #818080}.input:focus{border-color:var(--input-hover-bd-color)!important;outline:none}.feature-card{display:flex;min-height:200px;width:450px;gap:2rem;border-radius:.75rem;border-width:1px;--tw-border-opacity:1;border-color:rgb(31 33 35/var(--tw-border-opacity,1));--tw-bg-opacity:1;background-color:rgb(8 8 8/var(--tw-bg-opacity,1));padding:2rem}@media not all and (min-width:768px){.feature-card{width:320px;gap:1.25rem;padding:1.5rem}}.check-title{display:flex;align-items:center;gap:.5rem;font-size:1.25rem;line-height:1.75rem;font-weight:500}.check-title .bi{font-size:1.5rem;color:#c084fc}.team-card{display:flex;height:-moz-fit-content;height:fit-content;width:350px;-moz-column-break-inside:avoid;break-inside:avoid;flex-direction:column;gap:1rem;border-radius:.5rem;border-width:1px;--tw-border-opacity:1;border-color:rgb(31 33 35/var(--tw-border-opacity,1));--tw-bg-opacity:1;background-color:rgb(8 8 8/var(--tw-bg-opacity,1));padding:1rem}@media not all and (min-width:1024px){.team-card{width:320px}}.team-badge{height:50px;width:50px;flex-shrink:0;align-items:center;justify-content:center;border-radius:9999px;font-size:1.25rem;line-height:1.75rem;color:#e9d5ff;background:radial-gradient(circle at 30% 30%,#7e22ce 0,#3b0764 70%)}.price-card,.team-badge{display:flex}.price-card{width:380px;flex-direction:column;place-items:center;gap:.5rem;border-radius:.5rem;--tw-bg-opacity:1;background-color:rgb(8 8 8/var(--tw-bg-opacity,1));padding:2rem;--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}@media not all and (min-width:1024px){.price-card{width:320px}}.price-list{margin-top:1rem;display:flex;flex-direction:column;gap:.5rem;text-align:center;font-size:1.125rem;line-height:1.75rem;--tw-text-opacity:1;color:rgb(229 231 235/var(--tw-text-opacity,1))}.plan-flag{position:absolute;border-radius:9999px;padding:.25rem .75rem;font-size:.75rem;line-height:1rem;font-weight:500;text-transform:uppercase;letter-spacing:.05em;top:-13px;color:#fff;background:var(--btn-bg)}.article-card{display:flex;min-height:400px;width:400px;flex-direction:column;gap:1rem;border-radius:.5rem;padding:1rem}@media not all and (min-width:1024px){.article-card{width:300px}}.article-card img{transition:transform .3s}.article-card:hover img{transform:scale(1.04)}.footer-link{color:#c7c6c6;transition:color .3s}.footer-link:hover{color:#fff}.faq{width:100%;border-radius:.375rem;border-width:1px;border-style:solid;--tw-border-opacity:1;border-color:rgb(31 33 35/var(--tw-border-opacity,1));--tw-bg-opacity:1;background-color:rgb(8 8 8/var(--tw-bg-opacity,1))}.faq-accordion{display:flex;width:100%;align-items:center;font-size:1.25rem;line-height:1.75rem}@media not all and (min-width:768px){.faq-accordion{font-size:1.125rem;line-height:1.75rem}}.faq-accordion{color:#f2f2f2;cursor:pointer;padding:15px 18px;text-align:left}.faq-icon{margin-left:auto;padding-left:12px;transition:transform .3s}.faq.open .faq-icon{transform:rotate(45deg)}.faq .content{padding:0 18px;color:#e4e4e4;overflow:hidden;max-height:0;visibility:hidden;transition:max-height .4s,padding .4s,visibility 0s .4s}.faq.open .content{max-height:20rem;padding:20px 18px;visibility:visible;transition:max-height .4s,padding .4s}html:not(.js) .faq .content{max-height:none;padding:0 18px 18px;visibility:visible}.form-status:empty{display:none}@media (prefers-reduced-motion:no-preference){.js .reveal-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}.js .reveal-up.is-visible{opacity:1;transform:none}}@media not all and (min-width:1024px){header .collapsible-header{position:fixed;top:0;right:0;flex-direction:column;height:100vh;height:100dvh;width:0;opacity:0;visibility:hidden;justify-content:space-between;padding:5% 5px;place-items:end;background-color:#040404;color:#fff;overflow-y:auto;box-shadow:3px 0 3px 2px #9f9f9f;transition:width .3s ease,opacity .3s ease,visibility 0s .3s}header .collapsible-header.is-open{width:60vw;opacity:1;visibility:visible;transition:width .3s ease,opacity .3s ease}.header-links{color:#fff}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,:after,:before{transition-duration:.01ms!important;animation-duration:.01ms!important}}.hover\:tw-translate-x-2:hover{--tw-translate-x:0.5rem}.hover\:tw-scale-x-\[1\.02\]:hover,.hover\:tw-translate-x-2:hover{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:tw-scale-x-\[1\.02\]:hover{--tw-scale-x:1.02}.hover\:tw-scale-x-\[1\.03\]:hover{--tw-scale-x:1.03;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:\!tw-bg-white:hover{--tw-bg-opacity:1!important;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))!important}.hover\:\!tw-text-black:hover{--tw-text-opacity:1!important;color:rgb(0 0 0/var(--tw-text-opacity,1))!important}@media not all and (min-width:1280px){.max-xl\:tw-place-items-center{place-items:center}}@media not all and (min-width:1024px){.max-lg\:tw-mt-\[30px\]{margin-top:30px}.max-lg\:tw-max-w-full{max-width:100%}.max-lg\:tw-flex-col{flex-direction:column}.max-lg\:tw-place-items-end{place-items:end}.max-lg\:tw-gap-10{gap:2.5rem}.max-lg\:tw-gap-5{gap:1.25rem}.max-lg\:tw-object-contain{-o-object-fit:contain;object-fit:contain}.max-lg\:tw-p-3{padding:.75rem}.max-lg\:tw-p-4{padding:1rem}.max-lg\:tw-text-4xl{font-size:2.25rem;line-height:2.5rem}.max-lg\:tw-shadow-md{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}}@media not all and (min-width:768px){.max-md\:tw-hidden{display:none}.max-md\:tw-h-\[150px\]{height:150px}.max-md\:tw-min-h-0{min-height:0}.max-md\:tw-w-\[320px\]{width:320px}.max-md\:tw-w-full{width:100%}.max-md\:tw-max-w-full{max-width:100%}.max-md\:tw-columns-1{-moz-columns:1;column-count:1}.max-md\:tw-flex-col{flex-direction:column}.max-md\:tw-place-content-center{place-content:center}.max-md\:tw-gap-10{gap:2.5rem}.max-md\:tw-px-4{padding-left:1rem;padding-right:1rem}.max-md\:tw-pt-\[88px\]{padding-top:88px}.max-md\:tw-text-2xl{font-size:1.5rem;line-height:2rem}.max-md\:tw-text-3xl{font-size:1.875rem;line-height:2.25rem}.max-md\:tw-text-5xl{font-size:3rem;line-height:1}.max-md\:tw-text-base{font-size:1rem;line-height:1.5rem}.max-md\:tw-text-sm{font-size:.875rem;line-height:1.25rem}.max-md\:tw-text-xl{font-size:1.25rem;line-height:1.75rem}.max-md\:tw-leading-snug{line-height:1.375}}@media (min-width:768px){.md\:tw-hidden{display:none}}@media (min-width:1024px){.lg\:tw-mx-auto{margin-left:auto;margin-right:auto}.lg\:tw-hidden{display:none}.lg\:tw-columns-2{-moz-columns:2;column-count:2}.lg\:tw-place-items-center{place-items:center}.lg\:tw-justify-around{justify-content:space-around}}@media (min-width:1280px){.xl\:tw-columns-3{-moz-columns:3;column-count:3}}</style>
+    </head>
+    <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-black tw-text-white">
+        <a href="#main" class="skip-link">Skip to content</a>
+
+        <div class="demo-bar">
+            <span>Portfolio demo<span class="max-md:tw-hidden">: Dashdark is a fictional product</span><span class="md:tw-hidden"> · fictional product</span></span>
+            <a href="../"><span><span class="max-md:tw-hidden">See the before/after</span><span class="md:tw-hidden">Before/after</span> case study</span><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg></a>
+        </div>
+
+        <header
+            class="tw-absolute tw-top-[36px] tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] lg:tw-justify-around"
+        >
+            <a class="tw-h-[50px] tw-w-[50px] tw-p-[4px]" href="#main" aria-label="Dashdark home">
+                <picture><source type="image/avif" srcset="./assets/img/logo-48.avif 48w, ./assets/img/logo-100.avif 100w, ./assets/img/logo-150.avif 150w" sizes="42px"><img src="./assets/img/logo-100.webp" srcset="./assets/img/logo-48.webp 48w, ./assets/img/logo-100.webp 100w, ./assets/img/logo-150.webp 150w" sizes="42px" width="150" height="150" alt="Dashdark logo" class="tw-h-full tw-w-full tw-object-contain"></picture>
+            </a>
+            <nav
+                class="collapsible-header animated-collapse max-lg:tw-shadow-md"
+                id="collapsed-header-items"
+                aria-label="Main"
+            >
+                <div
+                    class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center"
+                >
+                    <a class="header-links" href="#features">Features</a>
+                    <a class="header-links" href="#reports">Reports</a>
+                    <a class="header-links" href="#pricing">Pricing</a>
+                    <a class="header-links" href="#blog">Blog</a>
+                    <a class="header-links" href="#faq">FAQ</a>
+                </div>
+                <div
+                    class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center"
+                >
+                    <a
+                        href="#signup"
+                        class="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-bg-white tw-px-3 tw-py-2 tw-text-black tw-transition-transform tw-duration-[0.3s] hover:tw-translate-x-2"
+                    >
+                        <span>Start free trial</span>
+                        <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/></svg>
+                    </a>
+                </div>
+            </nav>
+            <button
+                class="menu-btn tw-absolute tw-right-3 tw-top-2 tw-z-50 tw-text-3xl tw-text-white lg:tw-hidden"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="collapsed-header-items"
+                id="collapse-btn"
+            >
+                <span class="icon-open"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/></svg></span>
+                <span class="icon-close" hidden><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16"><path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/></svg></span>
+            </button>
+        </header>
+
+        <main id="main">
+            <section
+                class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-md:tw-min-h-0 max-md:tw-pt-[88px]"
+                id="hero-section"
+            >
+                <div
+                    class="tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-p-4 max-md:tw-min-h-0"
+                >
+                    <div class="tw-flex tw-flex-col tw-place-content-center tw-items-center">
+                        <h1
+                            class="gradient-text tw-text-center tw-text-6xl tw-font-semibold tw-uppercase tw-leading-[80px] max-lg:tw-text-4xl max-md:tw-leading-snug"
+                        >
+                            <span>Every metric</span>
+                            <br />
+                            <span>that moves revenue</span>
+                        </h1>
+                        <p
+                            class="tw-mt-10 tw-max-w-[520px] tw-p-2 tw-text-center tw-text-gray-300 max-lg:tw-max-w-full"
+                        >
+                            Dashdark pulls signups, subscriptions and revenue into one live
+                            dashboard, so your team stops exporting spreadsheets and starts
+                            making decisions.
+                        </p>
+
+                        <div class="tw-mt-10 tw-flex tw-place-items-center tw-gap-4">
+                            <a
+                                class="btn tw-bg-[#7e22ce] tw-shadow-lg tw-shadow-primary tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
+                                href="#signup"
+                            >
+                                Start free trial
+                            </a>
+                            <a
+                                class="btn tw-flex tw-gap-2 !tw-bg-black !tw-text-white tw-transition-colors tw-duration-[0.3s] hover:!tw-bg-white hover:!tw-text-black"
+                                href="#features"
+                            >
+                                <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/></svg>
+                                <span>See how it works</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div
+                        class="tw-relative tw-mt-8 tw-flex tw-w-full tw-place-content-center tw-place-items-center"
+                        id="dashboard-container"
+                    >
+                        <div
+                            class="tw-relative tw-z-10 tw-max-w-[80%] tw-overflow-hidden tw-rounded-xl tw-bg-transparent max-md:tw-max-w-full"
+                            id="dashboard"
+                        >
+                            <picture><source type="image/avif" srcset="./assets/img/dashboard-480.avif 480w, ./assets/img/dashboard-800.avif 800w, ./assets/img/dashboard-1228.avif 1228w" sizes="(max-width: 767px) 100vw, 80vw"><img src="./assets/img/dashboard-800.webp" srcset="./assets/img/dashboard-480.webp 480w, ./assets/img/dashboard-800.webp 800w, ./assets/img/dashboard-1228.webp 1228w" sizes="(max-width: 767px) 100vw, 80vw" width="1228" height="793" alt="Dashdark dashboard showing pageviews, monthly users, sign-ups, subscriptions and total revenue" class="tw-h-full tw-w-full tw-object-cover tw-opacity-90 max-lg:tw-object-contain" fetchpriority="high"></picture>
+                        </div>
+
+                        <div
+                            class="hero-img-bg-grad tw-absolute tw-left-[20%] tw-top-5 tw-h-[200px] tw-w-[200px]"
+                            aria-hidden="true"
+                        ></div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="tw-relative tw-flex tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
+                aria-labelledby="benefits-title"
+            >
+                <div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
+                    <div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
+                        <h2
+                            id="benefits-title"
+                            class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-3xl"
+                        >
+                            Key benefits
+                        </h2>
+                    </div>
+                    <div
+                        class="tw-mt-6 tw-flex tw-max-w-[1240px] tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col"
+                    >
+                        <div
+                            class="reveal-up tw-flex tw-min-h-[400px] tw-w-[380px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-min-h-0 max-md:tw-w-[320px]"
+                        >
+                            <div class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-h-[150px]">
+                                <div class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+                                    <span class="tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-rocket-takeoff-fill" viewBox="0 0 16 16"><path d="M12.17 9.53c2.307-2.592 3.278-4.684 3.641-6.218.21-.887.214-1.58.16-2.065a3.6 3.6 0 0 0-.108-.563 2 2 0 0 0-.078-.23V.453c-.073-.164-.168-.234-.352-.295a2 2 0 0 0-.16-.045 4 4 0 0 0-.57-.093c-.49-.044-1.19-.03-2.08.188-1.536.374-3.618 1.343-6.161 3.604l-2.4.238h-.006a2.55 2.55 0 0 0-1.524.734L.15 7.17a.512.512 0 0 0 .433.868l1.896-.271c.28-.04.592.013.955.132.232.076.437.16.655.248l.203.083c.196.816.66 1.58 1.275 2.195.613.614 1.376 1.08 2.191 1.277l.082.202c.089.218.173.424.249.657.118.363.172.676.132.956l-.271 1.9a.512.512 0 0 0 .867.433l2.382-2.386c.41-.41.668-.949.732-1.526zm.11-3.699c-.797.8-1.93.961-2.528.362-.598-.6-.436-1.733.361-2.532.798-.799 1.93-.96 2.528-.361s.437 1.732-.36 2.531Z"/><path d="M5.205 10.787a7.6 7.6 0 0 0 1.804 1.352c-1.118 1.007-4.929 2.028-5.054 1.903-.126-.127.737-4.189 1.839-5.18.346.69.837 1.35 1.411 1.925"/></svg></span>
+                                </div>
+                            </div>
+                            <div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+                                <h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+                                    Live in an afternoon
+                                </h3>
+                                <p class="tw-text-gray-300">
+                                    Connect your billing provider and product database; the first
+                                    dashboard builds itself.
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="reveal-up tw-flex tw-min-h-[400px] tw-w-[380px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-min-h-0 max-md:tw-w-[320px]"
+                        >
+                            <div class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-h-[150px]">
+                                <div class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+                                    <span class="tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-layout-sidebar-inset" viewBox="0 0 16 16"><path d="M14 2a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2z"/><path d="M3 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg></span>
+                                </div>
+                            </div>
+                            <div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+                                <h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+                                    One screen, not ten tabs
+                                </h3>
+                                <p class="tw-text-gray-300">
+                                    Revenue, usage and acquisition side by side, with one date
+                                    range across every chart.
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="reveal-up tw-flex tw-min-h-[400px] tw-w-[380px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-min-h-0 max-md:tw-w-[320px]"
+                        >
+                            <div class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-h-[150px]">
+                                <div class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+                                    <span class="tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-lightning-charge-fill" viewBox="0 0 16 16"><path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/></svg></span>
+                                </div>
+                            </div>
+                            <div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+                                <h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+                                    Answers in seconds
+                                </h3>
+                                <p class="tw-text-gray-300">
+                                    Filter any chart by plan, country or signup cohort without
+                                    writing a line of SQL.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="features"
+                class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
+                aria-labelledby="features-title"
+            >
+                <div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
+                    <div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
+                        <h2
+                            id="features-title"
+                            class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-2xl"
+                        >
+                            Everything a growing SaaS needs to measure
+                        </h2>
+                    </div>
+                    <div
+                        class="tw-mt-6 tw-flex tw-max-w-[80%] tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col max-md:tw-max-w-full"
+                    >
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-globe" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/></svg></div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Multi-currency revenue</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Normalize MRR across currencies and break it down by country
+                                    or plan.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16"><path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/></svg></div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Cohort retention</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    See how each signup month retains, expands or churns over
+                                    time.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-cloud-fill" viewBox="0 0 16 16"><path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383"/></svg></div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Daily snapshots</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Every metric is versioned daily, so last quarter's numbers
+                                    never change behind your back.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-fingerprint" viewBox="0 0 16 16"><path d="M8.06 6.5a.5.5 0 0 1 .5.5v.776a11.5 11.5 0 0 1-.552 3.519l-1.331 4.14a.5.5 0 0 1-.952-.305l1.33-4.141a10.5 10.5 0 0 0 .504-3.213V7a.5.5 0 0 1 .5-.5Z"/><path d="M6.06 7a2 2 0 1 1 4 0 .5.5 0 1 1-1 0 1 1 0 1 0-2 0v.332q0 .613-.066 1.221A.5.5 0 0 1 6 8.447q.06-.555.06-1.115zm3.509 1a.5.5 0 0 1 .487.513 11.5 11.5 0 0 1-.587 3.339l-1.266 3.8a.5.5 0 0 1-.949-.317l1.267-3.8a10.5 10.5 0 0 0 .535-3.048A.5.5 0 0 1 9.569 8m-3.356 2.115a.5.5 0 0 1 .33.626L5.24 14.939a.5.5 0 1 1-.955-.296l1.303-4.199a.5.5 0 0 1 .625-.329"/><path d="M4.759 5.833A3.501 3.501 0 0 1 11.559 7a.5.5 0 0 1-1 0 2.5 2.5 0 0 0-4.857-.833.5.5 0 1 1-.943-.334m.3 1.67a.5.5 0 0 1 .449.546 10.7 10.7 0 0 1-.4 2.031l-1.222 4.072a.5.5 0 1 1-.958-.287L4.15 9.793a9.7 9.7 0 0 0 .363-1.842.5.5 0 0 1 .546-.449Zm6 .647a.5.5 0 0 1 .5.5c0 1.28-.213 2.552-.632 3.762l-1.09 3.145a.5.5 0 0 1-.944-.327l1.089-3.145c.382-1.105.578-2.266.578-3.435a.5.5 0 0 1 .5-.5Z"/><path d="M3.902 4.222a5 5 0 0 1 5.202-2.113.5.5 0 0 1-.208.979 4 4 0 0 0-4.163 1.69.5.5 0 0 1-.831-.556m6.72-.955a.5.5 0 0 1 .705-.052A4.99 4.99 0 0 1 13.059 7v1.5a.5.5 0 1 1-1 0V7a3.99 3.99 0 0 0-1.386-3.028.5.5 0 0 1-.051-.705M3.68 5.842a.5.5 0 0 1 .422.568q-.044.289-.044.59c0 .71-.1 1.417-.298 2.1l-1.14 3.923a.5.5 0 1 1-.96-.279L2.8 8.821A6.5 6.5 0 0 0 3.058 7q0-.375.054-.736a.5.5 0 0 1 .568-.422m8.882 3.66a.5.5 0 0 1 .456.54c-.084 1-.298 1.986-.64 2.934l-.744 2.068a.5.5 0 0 1-.941-.338l.745-2.07a10.5 10.5 0 0 0 .584-2.678.5.5 0 0 1 .54-.456"/><path d="M4.81 1.37A6.5 6.5 0 0 1 14.56 7a.5.5 0 1 1-1 0 5.5 5.5 0 0 0-8.25-4.765.5.5 0 0 1-.5-.865m-.89 1.257a.5.5 0 0 1 .04.706A5.48 5.48 0 0 0 2.56 7a.5.5 0 0 1-1 0c0-1.664.626-3.184 1.655-4.333a.5.5 0 0 1 .706-.04ZM1.915 8.02a.5.5 0 0 1 .346.616l-.779 2.767a.5.5 0 1 1-.962-.27l.778-2.767a.5.5 0 0 1 .617-.346m12.15.481a.5.5 0 0 1 .49.51c-.03 1.499-.161 3.025-.727 4.533l-.07.187a.5.5 0 0 1-.936-.351l.07-.187c.506-1.35.634-2.74.663-4.202a.5.5 0 0 1 .51-.49"/></svg></div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">SSO and two-factor</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Enforce single sign-on and two-factor login for the whole
+                                    workspace.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/></svg></div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Warehouse sync</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Push clean metrics to your data warehouse, or pull custom
+                                    events back in.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16"><path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/></svg></div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Custom formulas</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Define your own KPIs once and reuse them in every report.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="reports"
+                class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
+                aria-labelledby="reports-title"
+            >
+                <div
+                    class="reveal-up tw-flex tw-min-h-[60vh] tw-place-content-center tw-place-items-center tw-gap-[10%] max-lg:tw-flex-col max-lg:tw-gap-10"
+                >
+                    <div class="tw-flex">
+                        <div
+                            class="tw-max-h-[650px] tw-max-w-[850px] tw-overflow-hidden tw-rounded-lg tw-shadow-lg tw-shadow-[rgba(170,49,233,0.44)]"
+                        >
+                            <picture><source type="image/avif" srcset="./assets/img/dash-640.avif 640w, ./assets/img/dash-1024.avif 1024w, ./assets/img/dash-1440.avif 1440w, ./assets/img/dash-1700.avif 1700w" sizes="(max-width: 1023px) 92vw, 850px"><img src="./assets/img/dash-1024.webp" srcset="./assets/img/dash-640.webp 640w, ./assets/img/dash-1024.webp 1024w, ./assets/img/dash-1440.webp 1440w, ./assets/img/dash-1700.webp 1700w" sizes="(max-width: 1023px) 92vw, 850px" width="1700" height="1045" alt="Analytics report with revenue by plan and a weekly sign-up chart" class="tw-h-full tw-w-full tw-object-cover" loading="lazy" decoding="async"></picture>
+                        </div>
+                    </div>
+                    <div class="tw-mt-6 tw-flex tw-max-w-[450px] tw-flex-col tw-gap-4">
+                        <h2 id="reports-title" class="tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+                            Reports your team will actually open
+                        </h2>
+
+                        <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+                            <h3 class="check-title"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16"><path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/></svg> Monday digests</h3>
+                            <p class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+                                A weekly summary lands in chat or email, with the biggest changes
+                                already highlighted.
+                            </p>
+                        </div>
+                        <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+                            <h3 class="check-title"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16"><path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/></svg> Shareable views</h3>
+                            <p class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+                                Send a read-only link to investors or the board without handing
+                                out another login.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
+                aria-labelledby="alerts-title"
+            >
+                <div
+                    class="reveal-up tw-flex tw-min-h-[60vh] tw-place-content-center tw-place-items-center tw-gap-[10%] max-lg:tw-flex-col max-lg:tw-gap-10"
+                >
+                    <div class="tw-mt-6 tw-flex tw-max-w-[450px] tw-flex-col tw-gap-4">
+                        <h2 id="alerts-title" class="tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+                            Spot problems before they hit revenue
+                        </h2>
+
+                        <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+                            <h3 class="check-title"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16"><path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/></svg> Anomaly alerts</h3>
+                            <p class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+                                Get notified when signups, trials or failed payments drift outside
+                                their usual range.
+                            </p>
+                        </div>
+                        <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+                            <h3 class="check-title"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-check-all" viewBox="0 0 16 16"><path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/></svg> Goals and targets</h3>
+                            <p class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+                                Set a target for any metric and track progress against it in
+                                real time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tw-flex">
+                        <div
+                            class="tw-max-h-[650px] tw-max-w-[850px] tw-overflow-hidden tw-rounded-lg tw-shadow-lg tw-shadow-[rgba(170,49,233,0.44)]"
+                        >
+                            <picture><source type="image/avif" srcset="./assets/img/insights-640.avif 640w, ./assets/img/insights-1024.avif 1024w, ./assets/img/insights-1440.avif 1440w, ./assets/img/insights-1700.avif 1700w" sizes="(max-width: 1023px) 92vw, 850px"><img src="./assets/img/insights-1024.webp" srcset="./assets/img/insights-640.webp 640w, ./assets/img/insights-1024.webp 1024w, ./assets/img/insights-1440.webp 1440w, ./assets/img/insights-1700.webp 1700w" sizes="(max-width: 1023px) 92vw, 850px" width="1700" height="1317" alt="Insights panel with top products, team progress and an 80% website visitor goal" class="tw-h-full tw-w-full tw-object-cover" loading="lazy" decoding="async"></picture>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="tw-mt-5 tw-flex tw-min-h-[80vh] tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%]"
+                aria-labelledby="teams-title"
+            >
+                <h2 id="teams-title" class="reveal-up tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-2xl">
+                    Built for the whole team
+                </h2>
+                <div class="tw-mt-8 tw-gap-10 tw-space-y-8 max-md:tw-columns-1 lg:tw-columns-2 xl:tw-columns-3">
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Board-ready MRR, churn and runway numbers, without rebuilding the
+                            spreadsheet every month.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-graph-up-arrow" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5"/></svg></span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Founders</h3>
+                                <span class="tw-text-gray-400">Growth and runway</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            See which features your retained cohorts use, and which ones nobody
+                            opens after week one.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16"><path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/></svg></span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Product</h3>
+                                <span class="tw-text-gray-400">Adoption and retention</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Tie every acquisition channel to paid conversions, not just to
+                            signups.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-megaphone" viewBox="0 0 16 16"><path d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-.214c-2.162-1.241-4.49-1.843-6.912-2.083l.405 2.712A1 1 0 0 1 5.51 15.1h-.548a1 1 0 0 1-.916-.599l-1.85-3.49-.202-.003A2.014 2.014 0 0 1 0 9V7a2.02 2.02 0 0 1 1.992-2.013 75 75 0 0 0 2.483-.075c3.043-.154 6.148-.849 8.525-2.199zm1 0v11a.5.5 0 0 0 1 0v-11a.5.5 0 0 0-1 0m-1 1.35c-2.344 1.205-5.209 1.842-8 2.033v4.233q.27.015.537.036c2.568.189 5.093.744 7.463 1.993zm-9 6.215v-4.13a95 95 0 0 1-1.992.052A1.02 1.02 0 0 0 1 7v2c0 .55.448 1.002 1.006 1.009A61 61 0 0 1 4 10.065m-.657.975 1.609 3.037.01.024h.548l-.002-.014-.443-2.966a68 68 0 0 0-1.722-.082z"/></svg></span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Growth</h3>
+                                <span class="tw-text-gray-400">Channels and funnels</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Reconcile revenue with billing, refunds and taxes in one place, down
+                            to the invoice.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-receipt" viewBox="0 0 16 16"><path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/><path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/></svg></span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Finance</h3>
+                                <span class="tw-text-gray-400">Revenue and billing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Find the accounts whose usage is dropping, before they reach the
+                            cancel button.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-life-preserver" viewBox="0 0 16 16"><path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m6.43-5.228a7.03 7.03 0 0 1-3.658 3.658l-1.115-2.788a4 4 0 0 0 1.985-1.985zM5.228 14.43a7.03 7.03 0 0 1-3.658-3.658l2.788-1.115a4 4 0 0 0 1.985 1.985zm9.202-9.202-2.788 1.115a4 4 0 0 0-1.985-1.985l1.115-2.788a7.03 7.03 0 0 1 3.658 3.658m-8.087-.87a4 4 0 0 0-1.985 1.985L1.57 5.228A7.03 7.03 0 0 1 5.228 1.57zM8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/></svg></span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Customer success</h3>
+                                <span class="tw-text-gray-400">Health and churn risk</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Read-only warehouse access and an API, so nobody files another
+                            "can you export this" ticket.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0"/></svg></span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Engineering</h3>
+                                <span class="tw-text-gray-400">Data access</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-[2%] max-lg:tw-p-4"
+                id="pricing"
+                aria-labelledby="pricing-title"
+            >
+                <h2 id="pricing-title" class="tw-text-3xl tw-font-medium tw-text-gray-300 max-md:tw-text-2xl">
+                    Simple pricing
+                </h2>
+                <div class="tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col">
+                    <div class="reveal-up price-card tw-border-[1px] tw-border-outlineColor">
+                        <h3 class="tw-text-lg tw-font-medium tw-text-gray-300">Starter</h3>
+                        <p>
+                            <span class="tw-text-5xl tw-font-semibold">$9</span>
+                            <span class="tw-text-2xl tw-text-gray-400">/mo</span>
+                        </p>
+                        <p class="tw-mt-3 tw-text-center tw-text-gray-300">
+                            For solo founders tracking their first revenue.
+                        </p>
+                        <hr />
+                        <ul class="price-list">
+                            <li>1 data source</li>
+                            <li>Core revenue metrics</li>
+                            <li>12 months of history</li>
+                            <li>Weekly email digest</li>
+                        </ul>
+                        <a href="#signup" class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]">
+                            Start with Starter
+                        </a>
+                    </div>
+                    <div class="reveal-up price-card tw-relative tw-border-2 tw-border-primary">
+                        <span class="plan-flag">Recommended</span>
+                        <h3 class="tw-text-lg tw-font-medium tw-text-gray-300">Growth</h3>
+                        <p>
+                            <span class="tw-text-5xl tw-font-semibold">$19</span>
+                            <span class="tw-text-2xl tw-text-gray-400">/mo</span>
+                        </p>
+                        <p class="tw-mt-3 tw-text-center tw-text-gray-300">
+                            For small teams that review metrics every week.
+                        </p>
+                        <hr />
+                        <ul class="price-list">
+                            <li>3 data sources</li>
+                            <li>Cohorts and retention</li>
+                            <li>Unlimited history</li>
+                            <li>Anomaly alerts</li>
+                        </ul>
+                        <a href="#signup" class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]">
+                            Start with Growth
+                        </a>
+                    </div>
+                    <div class="reveal-up price-card tw-border-[1px] tw-border-outlineColor">
+                        <h3 class="tw-text-lg tw-font-medium tw-text-gray-300">Scale</h3>
+                        <p>
+                            <span class="tw-text-5xl tw-font-semibold">$49</span>
+                            <span class="tw-text-2xl tw-text-gray-400">/mo</span>
+                        </p>
+                        <p class="tw-mt-3 tw-text-center tw-text-gray-300">
+                            For companies with several products and stricter security.
+                        </p>
+                        <hr />
+                        <ul class="price-list">
+                            <li>Unlimited data sources</li>
+                            <li>SSO and two-factor enforcement</li>
+                            <li>Warehouse sync</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <a href="#signup" class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]">
+                            Start with Scale
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="blog"
+                class="tw-mt-5 tw-flex tw-min-h-[80vh] tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%] max-lg:tw-p-3"
+                aria-labelledby="blog-title"
+            >
+                <h2 id="blog-title" class="reveal-up tw-text-center tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+                    From the blog
+                </h2>
+                <div class="reveal-up tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-10 max-lg:tw-flex-col">
+                    <article class="article-card">
+                        <div class="tw-h-[250px] tw-w-full tw-overflow-hidden tw-rounded-md">
+                            <picture><source type="image/avif" srcset="./assets/img/forest-400.avif 400w, ./assets/img/forest-640.avif 640w" sizes="(max-width: 1023px) 300px, 400px"><img src="./assets/img/forest-640.webp" srcset="./assets/img/forest-400.webp 400w, ./assets/img/forest-640.webp 640w" sizes="(max-width: 1023px) 300px, 400px" width="640" height="400" alt="Misty forest on a hillside" class="tw-h-full tw-w-full tw-object-cover" loading="lazy" decoding="async"></picture>
+                        </div>
+                        <h3 class="tw-mt-2 tw-text-2xl tw-font-semibold max-md:tw-text-xl">
+                            What a healthy churn curve looks like
+                        </h3>
+                        <p class="tw-text-gray-400">
+                            Why the first 90 days tell you more than the monthly average.
+                        </p>
+                    </article>
+                    <article class="article-card">
+                        <div class="tw-h-[250px] tw-w-full tw-overflow-hidden tw-rounded-md">
+                            <picture><source type="image/avif" srcset="./assets/img/mountain-400.avif 400w, ./assets/img/mountain-640.avif 640w" sizes="(max-width: 1023px) 300px, 400px"><img src="./assets/img/mountain-640.webp" srcset="./assets/img/mountain-400.webp 400w, ./assets/img/mountain-640.webp 640w" sizes="(max-width: 1023px) 300px, 400px" width="640" height="413" alt="Snow-covered mountain range at dusk" class="tw-h-full tw-w-full tw-object-cover" loading="lazy" decoding="async"></picture>
+                        </div>
+                        <h3 class="tw-mt-2 tw-text-2xl tw-font-semibold max-md:tw-text-xl">
+                            MRR vs. revenue: why they differ
+                        </h3>
+                        <p class="tw-text-gray-400">
+                            Annual plans, refunds and discounts, and where each one shows up.
+                        </p>
+                    </article>
+                    <article class="article-card">
+                        <div class="tw-h-[250px] tw-w-full tw-overflow-hidden tw-rounded-md">
+                            <picture><source type="image/avif" srcset="./assets/img/photography-400.avif 400w, ./assets/img/photography-640.avif 640w" sizes="(max-width: 1023px) 300px, 400px"><img src="./assets/img/photography-640.webp" srcset="./assets/img/photography-400.webp 400w, ./assets/img/photography-640.webp 640w" sizes="(max-width: 1023px) 300px, 400px" width="640" height="427" alt="Warm string lights glowing in the dark" class="tw-h-full tw-w-full tw-object-cover" loading="lazy" decoding="async"></picture>
+                        </div>
+                        <h3 class="tw-mt-2 tw-text-2xl tw-font-semibold max-md:tw-text-xl">
+                            Five numbers to show your board
+                        </h3>
+                        <p class="tw-text-gray-400">
+                            A short list that fits on one slide and survives follow-up questions.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section
+                id="faq"
+                class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%] max-md:tw-px-4"
+                aria-labelledby="faq-title"
+            >
+                <h2 id="faq-title" class="tw-text-4xl tw-font-medium tw-text-gray-300 max-md:tw-text-2xl">
+                    FAQ
+                </h2>
+                <div class="tw-mt-5 tw-flex tw-min-h-[300px] tw-w-full tw-max-w-[850px] tw-flex-col tw-gap-4">
+                    <div class="faq">
+                        <h3>
+                            <button class="faq-accordion" type="button" aria-expanded="false" aria-controls="faq-1">
+                                <span>Is Dashdark a real product?</span>
+                                <span class="faq-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></span>
+                            </button>
+                        </h3>
+                        <div class="content" id="faq-1">
+                            No. Dashdark is a fictional product made for a portfolio case study.
+                            This page is an optimized version of the open-source
+                            <a class="tw-underline" href="https://github.com/PaulleDemon/awesome-landing-pages">SaaSyDark template</a>
+                            (MIT license).
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <h3>
+                            <button class="faq-accordion" type="button" aria-expanded="false" aria-controls="faq-2">
+                                <span>Do I need to write SQL?</span>
+                                <span class="faq-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></span>
+                            </button>
+                        </h3>
+                        <div class="content" id="faq-2">
+                            No. Every chart can be filtered and grouped from the interface. SQL
+                            access is there for teams that want it.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <h3>
+                            <button class="faq-accordion" type="button" aria-expanded="false" aria-controls="faq-3">
+                                <span>Which data sources can I connect?</span>
+                                <span class="faq-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></span>
+                            </button>
+                        </h3>
+                        <div class="content" id="faq-3">
+                            Billing providers, product databases and web analytics. Anything else
+                            can be sent through the events API.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <h3>
+                            <button class="faq-accordion" type="button" aria-expanded="false" aria-controls="faq-4">
+                                <span>Can I cancel at any time?</span>
+                                <span class="faq-icon"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg></span>
+                            </button>
+                        </h3>
+                        <div class="content" id="faq-4">
+                            Yes. Plans are monthly, and you can export all of your data before you
+                            leave.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tw-mt-20 tw-flex tw-flex-col tw-place-items-center tw-gap-4">
+                    <p class="tw-text-3xl max-md:tw-text-2xl">Curious how this page was built?</p>
+                    <a
+                        href="../"
+                        class="btn !tw-rounded-full !tw-border-[1px] !tw-border-solid !tw-border-gray-300 !tw-bg-transparent tw-transition-colors tw-duration-[0.3s] hover:!tw-bg-white hover:!tw-text-black"
+                    >
+                        Read the case study
+                    </a>
+                </div>
+            </section>
+
+            <section
+                id="signup"
+                class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%] max-md:tw-px-4"
+                aria-labelledby="signup-title"
+            >
+                <form
+                    class="signup tw-flex tw-w-full tw-max-w-[80%] tw-place-content-center tw-place-items-center tw-justify-between tw-gap-3 tw-rounded-lg tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-6 max-md:tw-max-w-full max-md:tw-flex-col"
+                    id="signup-form"
+                    novalidate
+                >
+                    <div class="tw-flex tw-flex-col tw-gap-1">
+                        <h2 id="signup-title" class="tw-text-3xl tw-text-gray-300 max-md:tw-text-xl">
+                            Start a 14-day free trial
+                        </h2>
+                        <p class="tw-text-gray-300">No credit card. Demo form: nothing is sent.</p>
+                        <p class="form-status tw-text-sm" role="status" aria-live="polite"></p>
+                    </div>
+
+                    <div class="tw-flex tw-h-[60px] tw-place-items-center tw-gap-2 tw-p-2 max-md:tw-w-full">
+                        <label for="signup-email" class="sr-only">Work email</label>
+                        <input
+                            id="signup-email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            required
+                            class="input tw-h-full tw-w-full !tw-border-gray-600 tw-p-2"
+                            placeholder="you@company.com"
+                        />
+                        <button
+                            type="submit"
+                            class="btn tw-shrink-0 !tw-rounded-full !tw-border-[1px] !tw-border-solid !tw-border-gray-300 !tw-bg-transparent tw-transition-colors tw-duration-[0.3s] hover:!tw-bg-white hover:!tw-text-black"
+                        >
+                            Sign up
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer
+            class="tw-mt-auto tw-flex tw-w-full tw-place-content-around tw-gap-3 tw-p-[5%] tw-px-[10%] tw-text-white max-md:tw-flex-col max-md:tw-gap-10"
+        >
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-place-items-center tw-gap-6 max-md:tw-w-full">
+                <picture><source type="image/avif" srcset="./assets/img/logo-48.avif 48w, ./assets/img/logo-100.avif 100w, ./assets/img/logo-150.avif 150w" sizes="120px"><img src="./assets/img/logo-100.webp" srcset="./assets/img/logo-48.webp 48w, ./assets/img/logo-100.webp 100w, ./assets/img/logo-150.webp 150w" sizes="120px" width="150" height="150" alt="Dashdark" class="tw-w-[120px] tw-h-[120px]" loading="lazy" decoding="async"></picture>
+                <p class="tw-text-center tw-text-gray-400">
+                    Dashdark is a fictional product.<br />
+                    Page based on the SaaSyDark template (MIT).
+                </p>
+            </div>
+
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+                <h2 class="tw-text-3xl max-md:tw-text-xl">Product</h2>
+                <ul class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
+                    <li><a href="#features" class="footer-link">Features</a></li>
+                    <li><a href="#reports" class="footer-link">Reports</a></li>
+                    <li><a href="#pricing" class="footer-link">Pricing</a></li>
+                    <li><a href="#faq" class="footer-link">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+                <h2 class="tw-text-3xl max-md:tw-text-xl">About this demo</h2>
+                <ul class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
+                    <li><a href="../" class="footer-link">Before/after case study</a></li>
+                    <li><a href="../before/" class="footer-link">Original template</a></li>
+                    <li><a href="https://github.com/PaulleDemon/awesome-landing-pages" class="footer-link">Template source</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <script src="./main.js" defer></script>
+    </body>
+</html>

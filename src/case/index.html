@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Case study: a SaaS landing page, {{mPerfB}} to {{mPerfA}} on mobile Lighthouse</title>
+        <meta
+            name="description"
+            content="An open-source SaaS landing template measured as downloaded, then fixed without changing its design: mobile Lighthouse {{mPerfB}} to {{mPerfA}}, LCP {{lcpB}} s to {{lcpA}} s, page weight {{kbB}} KB to {{kbA}} KB."
+        />
+        <meta name="theme-color" content="#050505" />
+        <link rel="icon" href="./after/assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+        <meta property="og:title" content="SaaS landing page: {{mPerfB}} → {{mPerfA}} on mobile Lighthouse" />
+        <meta property="og:description" content="Same design, {{weightCut}}% lighter. A before/after front-end performance case study." />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="./case-assets/after-desktop-1200.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="preload" href="./after/assets/fonts/ubuntu-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="./after/assets/fonts/ubuntu-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+        <style>
+            @font-face { font-family: "Ubuntu"; font-weight: 400; font-display: swap; src: url("./after/assets/fonts/ubuntu-latin-400.woff2") format("woff2"); }
+            @font-face { font-family: "Ubuntu"; font-weight: 500; font-display: swap; src: url("./after/assets/fonts/ubuntu-latin-500.woff2") format("woff2"); }
+            @font-face { font-family: "Ubuntu"; font-weight: 600 700; font-display: swap; src: url("./after/assets/fonts/ubuntu-latin-700.woff2") format("woff2"); }
+
+            :root {
+                --bg: #050505;
+                --surface: #0c0b10;
+                --surface-2: #13111a;
+                --line: #221f2b;
+                --text: #f4f4f5;
+                --muted: #a1a1aa;
+                --accent: #a855f7;
+                --accent-deep: #7e22ce;
+                --good: #0cce6b;
+                --avg: #ffa400;
+                --poor: #ff4e42;
+                --radius: 16px;
+                --max: 1120px;
+            }
+            *, *::before, *::after { box-sizing: border-box; }
+            html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--text);
+                font: 400 17px/1.6 "Ubuntu", system-ui, -apple-system, "Segoe UI", sans-serif;
+            }
+            img { display: block; max-width: 100%; height: auto; }
+            a { color: inherit; }
+            :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+            .wrap { width: min(100% - 32px, var(--max)); margin-inline: auto; }
+            h1, h2, h3 { line-height: 1.15; margin: 0; font-weight: 700; letter-spacing: -0.01em; }
+            h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+            h3 { font-size: 1.15rem; font-weight: 500; }
+            p { margin: 0; }
+            .muted { color: var(--muted); }
+            .eyebrow {
+                display: inline-flex; align-items: center; gap: 8px;
+                font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+                color: #d8b4fe;
+            }
+            .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+            section { padding: clamp(56px, 9vw, 112px) 0; }
+            section + section { border-top: 1px solid var(--line); }
+            .section-head { display: grid; gap: 12px; max-width: 720px; margin-bottom: 40px; }
+
+            /* hero */
+            .hero { position: relative; overflow: hidden; padding-top: clamp(48px, 8vw, 96px); }
+            .hero::before {
+                content: ""; position: absolute; inset: -30% -10% auto; height: 620px; z-index: -1;
+                background:
+                    radial-gradient(40% 55% at 30% 40%, #7e22ce55, transparent 70%),
+                    radial-gradient(35% 45% at 75% 30%, #54d2d033, transparent 70%);
+                filter: blur(20px);
+            }
+            .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+            .hero-visual { perspective: 1600px; }
+            .hero-visual .browser { transform: rotateY(-14deg) rotateX(4deg); transform-origin: left center; box-shadow: 0 40px 80px -30px #7e22ce88, 0 0 0 1px #2e2a3a; }
+            .hero-visual .badge {
+                position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; margin: -22px 0 0 24px;
+                padding: 10px 16px; border-radius: 999px; background: #0f0d15; border: 1px solid #2e2a3a; font-size: 0.9rem; color: var(--muted);
+            }
+            .hero-visual .badge b { color: var(--good); font-size: 1.1rem; }
+            .hero h1 { font-size: clamp(2.1rem, 5vw, 3.6rem); max-width: 17ch; margin: 18px 0 20px; }
+            .hero h1 .grad {
+                background: linear-gradient(90deg, #f4f4f5 10%, #c4b5fd 60%, #67e8f9);
+                -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+            }
+            .hero .lede { font-size: clamp(1.05rem, 2vw, 1.25rem); color: #d4d4d8; max-width: 60ch; }
+            .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+            .btn {
+                display: inline-flex; align-items: center; gap: 10px;
+                padding: 12px 20px; border-radius: 999px; text-decoration: none; font-weight: 500;
+                border: 1px solid var(--line); background: var(--surface); transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            }
+            .btn:hover { border-color: #3f3a4d; background: var(--surface-2); }
+            .btn.primary { background: var(--accent-deep); border-color: var(--accent-deep); box-shadow: 0 10px 30px -10px #7e22cecc; }
+            .btn.primary:hover { background: #9333ea; transform: translateY(-1px); }
+            .btn svg { width: 16px; height: 16px; }
+
+            .headline-stats {
+                display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 56px;
+                background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+            }
+            .stat { background: var(--surface); padding: 24px 24px 22px; display: grid; gap: 6px; }
+            .stat .label { color: var(--muted); font-size: 0.9rem; }
+            .stat .value { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px; font-weight: 700; }
+            .stat .from { font-size: 1.3rem; color: #71717a; text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: #ff4e4299; }
+            .stat .arrow { color: #71717a; }
+            .stat .to { font-size: clamp(2rem, 4.5vw, 2.8rem); line-height: 1; color: #fff; }
+            .stat .unit { font-size: 1rem; font-weight: 500; color: var(--muted); }
+            .stat .note { font-size: 0.85rem; color: #d8b4fe; }
+
+            /* gauges */
+            .mode-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 16px; }
+            .mode-label h3 { font-size: 1rem; color: #d4d4d8; }
+            .legend { display: flex; gap: 14px; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; }
+            .legend span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; background: var(--c); }
+            .gauges { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+            .gauge {
+                background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+                padding: 22px 16px 18px; display: grid; justify-items: center; gap: 10px; text-align: center;
+            }
+            .ring { position: relative; width: 112px; height: 112px; }
+            .ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+            .ring .track { stroke: #1f1d26; }
+            .ring .val { font-size: 2rem; font-weight: 700; position: absolute; inset: 0; display: grid; place-items: center; }
+            .gauge .name { font-weight: 500; }
+            .gauge .was { font-size: 0.85rem; color: var(--muted); }
+            .gauge .was b { color: var(--c); font-weight: 700; }
+            .desktop-row { margin-top: 40px; }
+            .gauges.small .ring { width: 76px; height: 76px; }
+            .gauges.small .ring .val { font-size: 1.35rem; }
+
+            .metrics { margin-top: 40px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+            .metrics table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+            .metrics th, .metrics td { padding: 14px 18px; text-align: right; border-bottom: 1px solid var(--line); }
+            .metrics th:first-child, .metrics td:first-child { text-align: left; }
+            .metrics thead th { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; background: var(--surface); }
+            .metrics tbody tr:last-child td { border-bottom: 0; }
+            .metrics td.after { color: #fff; font-weight: 500; }
+            .metrics td.delta { color: var(--good); }
+            .metrics td.delta.worse { color: var(--muted); }
+            .metrics .table-scroll { overflow-x: auto; }
+
+            /* bytes bar */
+            .bytes { margin-top: 40px; display: grid; gap: 18px; }
+            .bytes-row { display: grid; grid-template-columns: 80px 1fr 90px; align-items: center; gap: 14px; }
+            .bytes-row .who { color: var(--muted); font-size: 0.9rem; }
+            .bytes-row .total { text-align: right; font-weight: 500; font-variant-numeric: tabular-nums; }
+            .bar { display: flex; height: 26px; border-radius: 8px; overflow: hidden; background: #111; }
+            .bar span { display: block; height: 100%; min-width: 2px; }
+            .bytes-legend { display: flex; flex-wrap: wrap; gap: 14px 20px; font-size: 0.85rem; color: var(--muted); }
+            .bytes-legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; background: var(--c); vertical-align: -1px; }
+
+            /* visual comparison */
+            .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+            .shot { margin: 0; display: grid; gap: 12px; }
+            .shot figcaption { display: flex; justify-content: space-between; gap: 8px; font-size: 0.9rem; color: var(--muted); }
+            .shot figcaption b { color: var(--text); font-weight: 500; }
+            .browser { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #000; box-shadow: 0 30px 60px -30px #000; }
+            .browser .chrome { display: flex; gap: 6px; padding: 10px 12px; background: var(--surface); border-bottom: 1px solid var(--line); }
+            .browser .chrome i { width: 9px; height: 9px; border-radius: 50%; background: #2a2733; }
+            .phones { display: flex; justify-content: center; gap: clamp(16px, 5vw, 64px); margin-top: 48px; }
+            .phone { margin: 0; display: grid; gap: 14px; justify-items: center; }
+            .phone .frame { width: min(42vw, 280px); border: 8px solid #1b1924; border-radius: 34px; overflow: hidden; background: #000; box-shadow: 0 30px 60px -20px #7e22ce44; }
+            .phone figcaption { font-size: 0.9rem; color: var(--muted); text-align: center; }
+            .phone figcaption b { color: var(--text); font-weight: 500; }
+
+            /* fixes */
+            .fixes { display: grid; gap: 16px; }
+            .fix {
+                display: grid; grid-template-columns: 1fr 1fr; background: var(--surface);
+                border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+            }
+            .fix > div { padding: 22px 24px; display: grid; gap: 8px; align-content: start; }
+            .fix .was { border-right: 1px solid var(--line); }
+            .fix .tag { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; }
+            .fix .was .tag { color: #fca5a5; }
+            .fix .now .tag { color: #86efac; }
+            .fix h3 { font-size: 1.05rem; }
+            .fix p { color: #c4c4cc; font-size: 0.95rem; }
+            .fix .effect { margin-top: 4px; font-size: 0.85rem; color: #d8b4fe; }
+            code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 0.88em; background: #1a1822; padding: 1px 6px; border-radius: 5px; }
+
+            /* method */
+            .method { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .method div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; display: grid; gap: 8px; }
+            .method p { color: #c4c4cc; font-size: 0.95rem; }
+
+            footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--muted); font-size: 0.9rem; }
+            footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+
+            @media (max-width: 1023px) {
+                .hero-grid { grid-template-columns: 1fr; }
+                .hero-visual { display: none; }
+            }
+            @media (max-width: 860px) {
+                .headline-stats { grid-template-columns: 1fr; }
+                .gauges { grid-template-columns: repeat(2, 1fr); }
+                .compare { grid-template-columns: 1fr; }
+                .fix { grid-template-columns: 1fr; }
+                .fix .was { border-right: 0; border-bottom: 1px solid var(--line); }
+                .method { grid-template-columns: 1fr; }
+                .bytes-row { grid-template-columns: 56px 1fr 72px; gap: 10px; }
+            }
+            @media (max-width: 560px) {
+                .metrics table { font-size: 0.85rem; }
+                .metrics th, .metrics td { padding: 12px 8px; }
+                .metrics th:first-child, .metrics td:first-child { padding-left: 14px; }
+                .metrics th:last-child, .metrics td:last-child { padding-right: 14px; }
+                .metrics thead th { font-size: 0.7rem; letter-spacing: 0.04em; }
+            }
+            /* ---------- motion and interaction (case.js adds .js / .motion) ---------- */
+            .progress {
+                position: fixed; inset: 0 0 auto; height: 3px; z-index: 50; pointer-events: none;
+                background: linear-gradient(90deg, #7e22ce, #a855f7, #54d2d0);
+                transform-origin: left; transform: scaleX(var(--p, 0));
+            }
+            .byline { margin-top: 18px; color: var(--muted); font-size: 0.95rem; }
+            .byline b { color: var(--text); font-weight: 500; }
+
+            .spot { position: relative; isolation: isolate; transition: border-color 0.3s, box-shadow 0.3s, transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
+            .spot::before {
+                content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+                background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), #a855f726, transparent 45%);
+                opacity: 0; transition: opacity 0.3s;
+            }
+            .spot:hover { border-color: #a855f766; box-shadow: 0 24px 50px -28px #7e22cebb; }
+            .spot:hover::before { opacity: 1; }
+            .motion .spot:hover { transform: translateY(-4px); }
+
+            .btn { position: relative; overflow: hidden; }
+            .btn svg { transition: transform 0.25s; }
+            .btn:hover svg { transform: translateX(4px); }
+            .btn.primary::after {
+                content: ""; position: absolute; inset: 0; pointer-events: none;
+                background: linear-gradient(110deg, transparent 30%, #ffffff40 50%, transparent 70%);
+                transform: translateX(-120%);
+            }
+            .motion .btn.primary:hover::after { transform: translateX(120%); transition: transform 0.7s ease; }
+
+            /* hero */
+            .motion .hero::before { animation: drift 14s ease-in-out infinite alternate; }
+            @keyframes drift { to { transform: translate3d(6%, 4%, 0) scale(1.08); } }
+            .motion .hero h1 .grad { background-size: 200% 100%; animation: shimmer 6s linear infinite; }
+            @keyframes shimmer { to { background-position: -200% 0; } }
+            .hero-visual .browser { transition: transform 0.25s ease-out, box-shadow 0.3s; transform: rotateY(var(--ry, -14deg)) rotateX(var(--rx, 4deg)); }
+            .hero-visual:hover .browser { box-shadow: 0 50px 90px -30px #a855f7aa, 0 0 0 1px #4c3d6b; }
+            .motion .hero-visual .badge { animation: float 5s ease-in-out infinite; }
+            @keyframes float { 50% { transform: translateY(-8px); } }
+
+            /* gauges */
+            .gauge .ring svg { transition: filter 0.3s, transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1); }
+            .gauge:hover .ring svg { filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 18px #0cce6b55); }
+            .motion .gauge:hover .ring svg { transform: rotate(-90deg) scale(1.06); }
+            .gauge .val { transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+            .motion .gauge:hover .val { transform: scale(1.12); }
+
+            /* table */
+            .metrics tbody tr { transition: background 0.2s; }
+            .metrics tbody tr:hover { background: #a855f714; }
+            .metrics tbody tr:hover td.after { color: #d8b4fe; }
+
+            /* bytes */
+            .bar { transition: clip-path 1.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+            .motion .bytes:not(.in) .bar { clip-path: inset(0 100% 0 0); }
+            .bar span { background: var(--c); transition: filter 0.2s, transform 0.2s; cursor: default; }
+            .bar span:hover { filter: brightness(1.35) saturate(1.2); }
+            .bytes-hint { min-height: 1.4em; font-size: 0.9rem; color: #d8b4fe; }
+
+            /* compare slider */
+            .slider { margin: 0; display: grid; gap: 12px; }
+            .stage { position: relative; aspect-ratio: 1440 / 900; overflow: hidden; background: #000; }
+            .stage .layer { position: absolute; inset: 0; }
+            .stage .layer img { width: 100%; height: 100%; object-fit: cover; }
+            .stage .layer.before { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+            .stage .tag {
+                position: absolute; top: 14px; z-index: 2; padding: 5px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 500;
+                background: #000000b3; border: 1px solid #ffffff26; backdrop-filter: blur(6px); pointer-events: none;
+            }
+            .stage .tag-before { left: 14px; color: #fca5a5; }
+            .stage .tag-after { right: 14px; color: #86efac; }
+            .stage .handle {
+                position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); z-index: 2; width: 2px; margin-left: -1px;
+                background: linear-gradient(#fff0, #fff 15%, #fff 85%, #fff0); pointer-events: none;
+            }
+            .stage .handle span {
+                position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; margin: -22px 0 0 -22px; border-radius: 50%;
+                display: grid; place-items: center; background: #7e22ce; color: #fff; box-shadow: 0 0 0 4px #7e22ce55, 0 10px 30px #000;
+                transition: transform 0.2s;
+            }
+            .stage .handle svg { width: 22px; height: 22px; }
+            .stage:hover .handle span { transform: scale(1.1); }
+            .stage input {
+                position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize;
+            }
+            .stage input:focus-visible ~ .handle span { outline: 3px solid #fff; outline-offset: 3px; }
+            .slider-caps { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 0.9rem; color: var(--muted); }
+            .slider-caps b { color: var(--text); font-weight: 500; }
+            .slider-hint { margin-left: auto; font-size: 0.75rem; color: var(--muted); letter-spacing: 0.04em; }
+
+            /* phones */
+            .phone .frame { transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s; }
+            .motion .phone .frame { animation: float 6s ease-in-out infinite; }
+            .motion .phone + .phone .frame { animation-delay: -3s; }
+            .phone:hover .frame { box-shadow: 0 40px 70px -20px #a855f799; }
+            .motion .phone:hover .frame { animation-play-state: paused; transform: scale(1.04) rotate(-1deg); }
+
+            /* fix cards */
+            .fix { position: relative; }
+            .fix .was, .fix .now { transition: opacity 0.35s, background 0.35s; }
+            .fix:hover .was { opacity: 0.55; }
+            .fix:hover .now { background: linear-gradient(90deg, #0cce6b12, transparent 70%); }
+            .fix::after {
+                content: "→"; position: absolute; left: 50%; top: 50%; z-index: 1; width: 34px; height: 34px; margin: -17px 0 0 -17px;
+                display: grid; place-items: center; border-radius: 50%; font-size: 1rem;
+                background: var(--surface-2); border: 1px solid var(--line); color: var(--muted);
+                transition: background 0.3s, color 0.3s, transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.3s;
+            }
+            .fix:hover::after { background: #0cce6b; color: #04130a; border-color: #0cce6b; }
+            .motion .fix:hover::after { transform: scale(1.15) rotate(360deg); }
+
+            /* reveal on scroll */
+            .motion .reveal { opacity: 0; transform: translateY(28px); }
+            .motion .reveal.in {
+                opacity: 1; transform: none;
+                transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+                transition-delay: calc(var(--i, 0) * 90ms);
+            }
+            .motion .reveal.in.spot:hover { transform: translateY(-4px); transition-delay: 0s; }
+            .eyebrow::before { transition: width 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s; }
+            .motion .section-head.reveal:not(.in) .eyebrow::before { width: 0; }
+
+            @media (max-width: 860px) {
+                .fix::after { display: none; }
+                .slider-hint { display: none; }
+                .stage .handle span { width: 36px; height: 36px; margin: -18px 0 0 -18px; }
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                html { scroll-behavior: auto; }
+                * { transition: none !important; }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="progress" aria-hidden="true"></div>
+        <main>
+            <section class="hero">
+                <div class="wrap">
+                  <div class="hero-grid">
+                   <div>
+                    <span class="eyebrow">Case study · Front-end performance</span>
+                    <h1>A SaaS landing page, <span class="grad">{{mPerfB}} → {{mPerfA}}</span> on mobile Lighthouse</h1>
+                    <p class="lede">
+                        I took an open-source SaaS landing template, measured it exactly as it ships, then fixed
+                        what was slowing it down, without changing how it looks. Every number on this page
+                        was measured the same way on both versions.
+                    </p>
+                    <p class="byline">By <b>Elmar Guliyev</b> · front-end performance and fixes</p>
+                    <div class="cta">
+                        <a class="btn primary" href="./after/">Open the optimized page {{arrow}}</a>
+                        <a class="btn" href="./before/">Open the original template {{arrow}}</a>
+                    </div>
+                   </div>
+                   <div class="hero-visual" aria-hidden="true">
+                    <div class="browser"><div class="chrome"><i></i><i></i><i></i></div>{{shotHero}}</div>
+                    <span class="badge">Mobile Lighthouse <b>{{mPerfA}}</b></span>
+                   </div>
+                  </div>
+
+                    <div class="headline-stats">
+                        <div class="stat">
+                            <span class="label">Mobile Performance score</span>
+                            <span class="value"><span class="from">{{mPerfB}}</span><span class="arrow">→</span><span class="to"><span class="count" data-from="{{mPerfB}}" data-to="{{mPerfA}}">{{mPerfA}}</span></span></span>
+                            <span class="note">median of {{runs}} runs each</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Largest Contentful Paint, mobile</span>
+                            <span class="value"><span class="from">{{lcpB}} s</span><span class="arrow">→</span><span class="to"><span class="count" data-from="{{lcpB}}" data-to="{{lcpA}}" data-dec="1">{{lcpA}}</span><span class="unit"> s</span></span></span>
+                            <span class="note">Google's "good" threshold is 2.5 s</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Page weight on first load</span>
+                            <span class="value"><span class="from">{{kbB}} KB</span><span class="arrow">→</span><span class="to"><span class="count" data-from="{{kbB}}" data-to="{{kbA}}">{{kbA}}</span><span class="unit"> KB</span></span></span>
+                            <span class="note">{{weightCut}}% less to download, {{reqB}} → {{reqA}} requests</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="scores-title">
+                <div class="wrap">
+                    <div class="section-head">
+                        <span class="eyebrow">Lighthouse scores</span>
+                        <h2 id="scores-title">All four categories in the green</h2>
+                        <p class="muted">
+                            Mobile uses Lighthouse's default throttling (slow 4G, 4× slower CPU), which is where
+                            most landing pages lose their visitors. Desktop was already fine; mobile was not.
+                        </p>
+                    </div>
+
+                    <div class="mode-label">
+                        <h3>Mobile</h3>
+                        <div class="legend">
+                            <span style="--c: var(--poor)">0–49</span>
+                            <span style="--c: var(--avg)">50–89</span>
+                            <span style="--c: var(--good)">90–100</span>
+                        </div>
+                    </div>
+                    <div class="gauges">{{gaugesMobile}}</div>
+
+                    <div class="desktop-row">
+                        <div class="mode-label"><h3>Desktop</h3></div>
+                        <div class="gauges small">{{gaugesDesktop}}</div>
+                    </div>
+
+                    <div class="metrics">
+                        <div class="table-scroll">
+                            <table>
+                                <thead>
+                                    <tr><th scope="col">Mobile metric</th><th scope="col">Original</th><th scope="col">Optimized</th><th scope="col">Change</th></tr>
+                                </thead>
+                                <tbody>{{metricRows}}</tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="bytes" aria-label="Where the bytes go on first load, mobile">
+                        <h3>Where the bytes go on first load</h3>
+                        {{bytesRows}}
+                        <p class="bytes-hint" aria-hidden="true"></p>
+                        <div class="bytes-legend">{{bytesLegend}}</div>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="look-title">
+                <div class="wrap">
+                    <div class="section-head">
+                        <span class="eyebrow">Same design</span>
+                        <h2 id="look-title">It looks the same. It just stopped making people wait.</h2>
+                        <p class="muted">
+                            The layout, colors, type and imagery are the template's. The copy was rewritten for a
+                            fictional product ("Dashdark") because the original was lorem ipsum.
+                        </p>
+                    </div>
+                    <figure class="slider" style="--pos: 50%">
+                        <div class="browser">
+                            <div class="chrome"><i></i><i></i><i></i><span class="slider-hint">Drag to compare</span></div>
+                            <div class="stage">
+                                <div class="layer after">{{shotAfterDesktop}}</div>
+                                <div class="layer before">{{shotBeforeDesktop}}</div>
+                                <span class="tag tag-before">Original</span>
+                                <span class="tag tag-after">Optimized</span>
+                                <input type="range" min="0" max="100" value="50" step="0.5" aria-label="Compare: slide left for the optimized page, right for the original" />
+                                <div class="handle" aria-hidden="true"><span><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5.5 3.5 1 8l4.5 4.5.7-.7L2.9 8.5h10.2l-3.3 3.3.7.7L15 8l-4.5-4.5-.7.7 3.3 3.3H2.9l3.3-3.3z"/></svg></span></div>
+                            </div>
+                        </div>
+                        <figcaption class="slider-caps">
+                            <span><b>Original template</b> · {{kbB}} KB · LCP {{lcpB}} s</span>
+                            <span><b>Optimized</b> · {{kbA}} KB · LCP {{lcpA}} s</span>
+                        </figcaption>
+                    </figure>
+                    <div class="phones">
+                        <figure class="phone">
+                            <div class="frame">{{shotBeforeMobile}}</div>
+                            <figcaption><b>Original</b><br />mobile score {{mPerfB}}</figcaption>
+                        </figure>
+                        <figure class="phone">
+                            <div class="frame">{{shotAfterMobile}}</div>
+                            <figcaption><b>Optimized</b><br />mobile score {{mPerfA}}</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="fixes-title">
+                <div class="wrap">
+                    <div class="section-head">
+                        <span class="eyebrow">What changed</span>
+                        <h2 id="fixes-title">Eight problems, eight fixes</h2>
+                        <p class="muted">
+                            The first five show up in Lighthouse. The last three do not, and they are the ones a
+                            visitor notices first.
+                        </p>
+                    </div>
+                    <div class="fixes">
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>Full-size screenshots sent to phones</h3>
+                                <p>Product images up to 2876 px wide, as PNG, with no <code>width</code>/<code>height</code>, all loaded up front.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>Responsive AVIF and WebP</h3>
+                                <p>Each image comes in 2–4 sizes; the browser picks one. Below-the-fold images load lazily; the hero image is requested with high priority.</p>
+                                <p class="effect">Images on first load: {{imgB}} KB → {{imgA}} KB</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>Four stylesheets blocking the first paint</h3>
+                                <p>Two local CSS files, a CDN icon font stylesheet, and a Google Fonts <code>@import</code> inside CSS, which chains one more request before any text can appear.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>One inlined stylesheet</h3>
+                                <p>Tailwind rebuilt from the actual markup and inlined ({{cssKb}} KB). Nothing blocks rendering.</p>
+                                <p class="effect">First Contentful Paint: {{fcpB}} s → {{fcpA}} s</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>Two font families, nine styles, one family unused</h3>
+                                <p>Ubuntu in eight styles (four weights, each with italics), plus Dancing Script, which the page never uses. And a {{iconFontKb}} KB icon font for 18 icons.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>Three self-hosted weights, SVG icons</h3>
+                                <p>Only the weights in use, subset to Latin and preloaded. Icons inlined as SVG.</p>
+                                <p class="effect">Fonts: {{fontB}} KB → {{fontA}} KB</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>An animation library for fade-ins</h3>
+                                <p>GSAP and ScrollTrigger from a CDN ({{gsapKb}} KB) to fade sections in and tilt the hero image.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>A few lines of CSS and JavaScript</h3>
+                                <p>An <code>IntersectionObserver</code> for the fade-ins and a CSS scroll-driven animation for the hero tilt. No third-party code at all.</p>
+                                <p class="effect">JavaScript: {{jsB}} KB → {{jsA}} KB, third-party requests {{thirdB}} → 0</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>Weak SEO basics</h3>
+                                <p>Empty meta description, no <code>&lt;h1&gt;</code>, links with no destination, empty social preview tags.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>A page search engines can read</h3>
+                                <p>Description, one <code>&lt;h1&gt;</code> and a logical heading order, working anchor links, Open Graph image.</p>
+                                <p class="effect">SEO score: {{mSeoB}} → {{mSeoA}}</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>Content hidden until you scroll</h3>
+                                <p>{{hiddenB}} of {{hiddenTotalB}} text and image elements start invisible, even when the visitor has asked the OS to reduce motion.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>Motion only when it is welcome</h3>
+                                <p>Fade-ins run only if the visitor has not asked for reduced motion, and only after the script has loaded. Without JavaScript, everything is visible.</p>
+                                <p class="effect">Hidden with reduced motion: {{hiddenRmB}} → {{hiddenRmA}}</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>Parts you can't reach by keyboard</h3>
+                                <p>FAQ items built from <code>&lt;div&gt;</code>s, a closed mobile menu whose links still take focus, an email field with no label.</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>Keyboard and screen reader friendly</h3>
+                                <p>Real buttons with <code>aria-expanded</code>, a menu that is hidden when closed and closes on Escape, a labelled form, skip link, visible focus.</p>
+                                <p class="effect">Lighthouse already said 100; these were found by hand</p>
+                            </div>
+                        </article>
+                        <article class="fix">
+                            <div class="was">
+                                <span class="tag">Before</span>
+                                <h3>Placeholder and borrowed credibility</h3>
+                                <p>Lorem ipsum, "Trusted by" logos of real companies, invented testimonials, a Dublin address labelled "United States".</p>
+                            </div>
+                            <div class="now">
+                                <span class="tag">After</span>
+                                <h3>Honest copy</h3>
+                                <p>Written copy for a clearly labelled fictional product. No real brands, no fake reviews; the testimonial grid became a "who it's for" grid.</p>
+                                <p class="effect">A demo should not pretend to be a customer</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="method-title">
+                <div class="wrap">
+                    <div class="section-head">
+                        <span class="eyebrow">How it was measured</span>
+                        <h2 id="method-title">Numbers you can reproduce</h2>
+                    </div>
+                    <div class="method">
+                        <div>
+                            <h3>Same tool, same conditions</h3>
+                            <p>Lighthouse {{lhVersion}} in headless Chrome, default mobile and desktop presets. Both versions served by the same local static server, {{runs}} runs each; this page shows the median. Measured {{date}}.</p>
+                        </div>
+                        <div>
+                            <h3>What was left out</h3>
+                            <p>Server-level audits (text compression, cache headers) depend on the host, not the page, and were identical for both versions, so they are excluded. Mobile scores move a few points between runs; the gap does not.</p>
+                        </div>
+                        <div>
+                            <h3>The original is untouched</h3>
+                            <p>The "before" page is the <a href="https://github.com/PaulleDemon/awesome-landing-pages">SaaSyDark</a> template exactly as downloaded (commit <code>54e867c</code>), only served from a different folder.</p>
+                        </div>
+                        <div>
+                            <h3>Checked in a real browser too</h3>
+                            <p>No console errors, no horizontal scrolling at 390 px or 1440 px, working menu, FAQ and form on both breakpoints.</p>
+                        </div>
+                    </div>
+                    <div class="cta">
+                        <a class="btn primary" href="./after/">Open the optimized page {{arrow}}</a>
+                        <a class="btn" href="./before/">Open the original template {{arrow}}</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="wrap">
+                <span>Case study by Elmar Guliyev. Portfolio demo: Dashdark is a fictional product.</span>
+                <span>Template: SaaSyDark by PaulleDemon, MIT license. Font: Ubuntu, Ubuntu Font Licence.</span>
+            </div>
+        </footer>
+        <script>
+            // Motion and interaction for the case study. Everything is readable without it;
+            // animations only run when the visitor has not asked for reduced motion.
+            (() => {
+                const root = document.documentElement
+                const motion = window.matchMedia("(prefers-reduced-motion: no-preference)").matches
+                root.classList.add("js")
+                if (motion) root.classList.add("motion")
+
+                const ease = (t) => 1 - Math.pow(1 - t, 3)
+                const tween = (ms, step) => {
+                    const t0 = performance.now()
+                    const tick = (now) => {
+                        const t = Math.min(1, (now - t0) / ms)
+                        step(ease(t))
+                        if (t < 1) requestAnimationFrame(tick)
+                    }
+                    requestAnimationFrame(tick)
+                }
+                const scoreColor = (v) => (v >= 90 ? "#0cce6b" : v >= 50 ? "#ffa400" : "#ff4e42")
+
+                // Scroll progress
+                const bar = document.querySelector(".progress")
+                const onScroll = () => {
+                    const max = root.scrollHeight - innerHeight
+                    bar.style.setProperty("--p", max > 0 ? scrollY / max : 0)
+                }
+                addEventListener("scroll", onScroll, { passive: true })
+                onScroll()
+
+                // Cursor spotlight on cards
+                const spots = document.querySelectorAll(".stat, .gauge, .fix, .method > div, .metrics")
+                spots.forEach((el) => el.classList.add("spot"))
+                document.addEventListener("pointermove", (e) => {
+                    const el = e.target.closest(".spot")
+                    if (!el) return
+                    const r = el.getBoundingClientRect()
+                    el.style.setProperty("--mx", `${e.clientX - r.left}px`)
+                    el.style.setProperty("--my", `${e.clientY - r.top}px`)
+                })
+
+                // Animated numbers: before -> after
+                const count = (el) => {
+                    const from = parseFloat(el.dataset.from)
+                    const to = parseFloat(el.dataset.to)
+                    const dec = Number(el.dataset.dec || 0)
+                    tween(1600, (k) => (el.textContent = (from + (to - from) * k).toFixed(dec)))
+                }
+                const gauge = (g) => {
+                    if (g.dataset.busy) return
+                    g.dataset.busy = "1"
+                    const from = Number(g.dataset.from)
+                    const to = Number(g.dataset.to)
+                    const arc = g.querySelector(".arc")
+                    const val = g.querySelector(".val")
+                    const c = Number(arc.getAttribute("stroke-dasharray"))
+                    // Animate from the "before" score; an unchanged score fills up from zero instead.
+                    const start = from === to ? 0 : from
+                    tween(1400, (k) => {
+                        const v = start + (to - start) * k
+                        arc.setAttribute("stroke-dashoffset", ((1 - v / 100) * c).toFixed(2))
+                        // An unchanged score keeps its own color while filling, so it never flashes red.
+                        const col = from === to ? scoreColor(to) : scoreColor(v)
+                        arc.setAttribute("stroke", col)
+                        val.style.color = col
+                        val.textContent = Math.round(v)
+                        if (k === 1) delete g.dataset.busy
+                    })
+                }
+
+                // Reveal on scroll, staggered within each group
+                const groups = [
+                    ".section-head", ".headline-stats .stat", ".gauges .gauge", ".metrics", ".bytes",
+                    ".slider", ".phone", ".fix", ".method > div",
+                ]
+                groups.forEach((sel) => document.querySelectorAll(sel).forEach((el, i) => {
+                    el.classList.add("reveal")
+                    el.style.setProperty("--i", el.matches(".fix") ? 0 : i % 4)
+                }))
+                const onReveal = (el) => {
+                    el.classList.add("in")
+                    if (!motion) return
+                    if (el.matches(".gauge")) setTimeout(() => gauge(el), 150 + Number(el.style.getPropertyValue("--i")) * 90)
+                    if (el.matches(".stat")) el.querySelectorAll(".count").forEach(count)
+                    if (el.matches(".slider")) sweep(el)
+                }
+                if ("IntersectionObserver" in window) {
+                    const io = new IntersectionObserver((entries) => {
+                        for (const e of entries) {
+                            if (!e.isIntersecting) continue
+                            onReveal(e.target)
+                            io.unobserve(e.target)
+                        }
+                    }, { rootMargin: "0px 0px -8% 0px" })
+                    document.querySelectorAll(".reveal").forEach((el) => io.observe(el))
+                } else {
+                    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"))
+                }
+
+                // Replay a gauge when the pointer enters it
+                if (motion) document.querySelectorAll(".gauge").forEach((g) => g.addEventListener("pointerenter", () => gauge(g)))
+
+                // Bytes bar: name the segment under the pointer
+                const hint = document.querySelector(".bytes-hint")
+                document.querySelectorAll(".bar span").forEach((seg) => {
+                    seg.addEventListener("pointerenter", () => {
+                        const who = seg.closest(".bytes-row").querySelector(".who").textContent
+                        hint.textContent = `${who}: ${seg.dataset.label}`
+                    })
+                })
+                document.querySelectorAll(".bar").forEach((b) => b.addEventListener("pointerleave", () => (hint.textContent = "")))
+
+                // Hero screenshot follows the pointer
+                const visual = document.querySelector(".hero-visual")
+                if (motion && visual) {
+                    const frame = visual.querySelector(".browser")
+                    document.querySelector(".hero").addEventListener("pointermove", (e) => {
+                        const r = visual.getBoundingClientRect()
+                        const dx = (e.clientX - (r.left + r.width / 2)) / innerWidth
+                        const dy = (e.clientY - (r.top + r.height / 2)) / innerHeight
+                        frame.style.setProperty("--ry", `${-14 + dx * 16}deg`)
+                        frame.style.setProperty("--rx", `${4 - dy * 10}deg`)
+                    })
+                    document.querySelector(".hero").addEventListener("pointerleave", () => {
+                        frame.style.removeProperty("--ry")
+                        frame.style.removeProperty("--rx")
+                    })
+                }
+
+                // Before/after slider
+                const slider = document.querySelector(".slider")
+                const range = slider.querySelector("input")
+                let touched = false
+                const setPos = (v) => slider.style.setProperty("--pos", `${v}%`)
+                range.addEventListener("input", () => {
+                    touched = true
+                    setPos(range.value)
+                })
+                function sweep() {
+                    // A short hint that the image can be dragged; stops as soon as the visitor touches it.
+                    const keys = [50, 18, 82, 50]
+                    let i = 0
+                    const next = () => {
+                        if (touched || i >= keys.length - 1) return
+                        const a = keys[i]
+                        const b = keys[++i]
+                        tween(900, (k) => {
+                            if (touched) return
+                            const v = a + (b - a) * k
+                            setPos(v)
+                            range.value = v
+                            if (k === 1) setTimeout(next, 120)
+                        })
+                    }
+                    setTimeout(next, 500)
+                }
+            })()
+        </script>
+    </body>
+</html>

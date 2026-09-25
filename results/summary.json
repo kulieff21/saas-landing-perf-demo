@@ -1,0 +1,496 @@
+{
+  "date": "2026-09-25T10:04:48.854Z",
+  "runs": 3,
+  "pages": {
+    "before": {
+      "url": "/before/index.html",
+      "mobile": {
+        "median": {
+          "performance": 67,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 82,
+          "lcp": 6686.039911172949,
+          "fcp": 4153.413911729499,
+          "tbt": 0,
+          "cls": 0.005409204252527493,
+          "si": 4153.413911729499,
+          "bytes": 1448497,
+          "requests": 32
+        },
+        "runs": [
+          {
+            "performance": 63,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82,
+            "lcp": 6914.002259590887,
+            "fcp": 4490.356595908878,
+            "tbt": 0,
+            "cls": 0,
+            "si": 5524.597662279556,
+            "bytes": 1448864,
+            "requests": 32
+          },
+          {
+            "performance": 77,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82,
+            "lcp": 5045.585464938067,
+            "fcp": 2189.047794814201,
+            "tbt": 175,
+            "cls": 0.005409204252527493,
+            "si": 2189.047794814201,
+            "bytes": 1448497,
+            "requests": 32
+          },
+          {
+            "performance": 67,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 82,
+            "lcp": 6686.039911172949,
+            "fcp": 4153.413911729499,
+            "tbt": 0,
+            "cls": 0.00587181239360425,
+            "si": 4153.413911729499,
+            "bytes": 1448477,
+            "requests": 32
+          }
+        ],
+        "failing": [
+          {
+            "id": "first-contentful-paint",
+            "title": "First Contentful Paint",
+            "display": "4.5 s"
+          },
+          {
+            "id": "largest-contentful-paint",
+            "title": "Largest Contentful Paint",
+            "display": "6.9 s"
+          },
+          {
+            "id": "speed-index",
+            "title": "Speed Index",
+            "display": "5.5 s"
+          },
+          {
+            "id": "font-display-insight",
+            "title": "Font display",
+            "display": "Est savings of 40 ms"
+          },
+          {
+            "id": "forced-reflow-insight",
+            "title": "Forced reflow",
+            "display": ""
+          },
+          {
+            "id": "image-delivery-insight",
+            "title": "Improve image delivery",
+            "display": "Est savings of 937 KiB"
+          },
+          {
+            "id": "lcp-discovery-insight",
+            "title": "LCP request discovery",
+            "display": ""
+          },
+          {
+            "id": "network-dependency-tree-insight",
+            "title": "Network dependency tree",
+            "display": ""
+          },
+          {
+            "id": "render-blocking-insight",
+            "title": "Render blocking requests",
+            "display": "Est savings of 2,450 ms"
+          },
+          {
+            "id": "interactive",
+            "title": "Time to Interactive",
+            "display": "7.0 s"
+          },
+          {
+            "id": "render-blocking-resources",
+            "title": "Eliminate render-blocking resources",
+            "display": "Est savings of 2,450 ms"
+          },
+          {
+            "id": "uses-responsive-images",
+            "title": "Properly size images",
+            "display": "Est savings of 882 KiB"
+          },
+          {
+            "id": "offscreen-images",
+            "title": "Defer offscreen images",
+            "display": "Est savings of 742 KiB"
+          },
+          {
+            "id": "unused-css-rules",
+            "title": "Reduce unused CSS",
+            "display": "Est savings of 10 KiB"
+          },
+          {
+            "id": "modern-image-formats",
+            "title": "Serve images in next-gen formats",
+            "display": "Est savings of 676 KiB"
+          },
+          {
+            "id": "uses-rel-preconnect",
+            "title": "Preconnect to required origins",
+            "display": "Est savings of 350 ms"
+          },
+          {
+            "id": "mainthread-work-breakdown",
+            "title": "Minimize main-thread work",
+            "display": "2.5 s"
+          },
+          {
+            "id": "largest-contentful-paint-element",
+            "title": "Largest Contentful Paint element",
+            "display": "6,910 ms"
+          },
+          {
+            "id": "unsized-images",
+            "title": "Image elements do not have explicit `width` and `height`",
+            "display": ""
+          },
+          {
+            "id": "meta-description",
+            "title": "Document does not have a meta description",
+            "display": ""
+          },
+          {
+            "id": "crawlable-anchors",
+            "title": "Links are not crawlable",
+            "display": ""
+          }
+        ]
+      },
+      "desktop": {
+        "median": {
+          "performance": 97,
+          "accessibility": 100,
+          "best-practices": 96,
+          "seo": 82,
+          "lcp": 1135.568203287081,
+          "fcp": 760.6847745168113,
+          "tbt": 0,
+          "cls": 0.0008961214734868527,
+          "si": 808.438751061171,
+          "bytes": 1448474,
+          "requests": 32
+        },
+        "runs": [
+          {
+            "performance": 97,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 82,
+            "lcp": 1172.7610854105587,
+            "fcp": 800.5270270527938,
+            "tbt": 0,
+            "cls": 0.0008961214734868527,
+            "si": 832.6623142205517,
+            "bytes": 1448474,
+            "requests": 32
+          },
+          {
+            "performance": 97,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 82,
+            "lcp": 1135.568203287081,
+            "fcp": 744.5462664354056,
+            "tbt": 0,
+            "cls": 0.0008878482864026946,
+            "si": 808.438751061171,
+            "bytes": 1448472,
+            "requests": 32
+          },
+          {
+            "performance": 97,
+            "accessibility": 100,
+            "best-practices": 96,
+            "seo": 82,
+            "lcp": 1130.780874903362,
+            "fcp": 760.6847745168113,
+            "tbt": 0,
+            "cls": 0.0009101093376883964,
+            "si": 801.525875994595,
+            "bytes": 1448480,
+            "requests": 32
+          }
+        ],
+        "failing": [
+          {
+            "id": "font-display-insight",
+            "title": "Font display",
+            "display": "Est savings of 40 ms"
+          },
+          {
+            "id": "image-delivery-insight",
+            "title": "Improve image delivery",
+            "display": "Est savings of 745 KiB"
+          },
+          {
+            "id": "lcp-discovery-insight",
+            "title": "LCP request discovery",
+            "display": ""
+          },
+          {
+            "id": "network-dependency-tree-insight",
+            "title": "Network dependency tree",
+            "display": ""
+          },
+          {
+            "id": "render-blocking-insight",
+            "title": "Render blocking requests",
+            "display": "Est savings of 200 ms"
+          },
+          {
+            "id": "render-blocking-resources",
+            "title": "Eliminate render-blocking resources",
+            "display": "Est savings of 200 ms"
+          },
+          {
+            "id": "uses-responsive-images",
+            "title": "Properly size images",
+            "display": "Est savings of 821 KiB"
+          },
+          {
+            "id": "unused-css-rules",
+            "title": "Reduce unused CSS",
+            "display": "Est savings of 10 KiB"
+          },
+          {
+            "id": "modern-image-formats",
+            "title": "Serve images in next-gen formats",
+            "display": "Est savings of 676 KiB"
+          },
+          {
+            "id": "unsized-images",
+            "title": "Image elements do not have explicit `width` and `height`",
+            "display": ""
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "title": "Elements with visible text labels do not have matching accessible names.",
+            "display": ""
+          },
+          {
+            "id": "image-aspect-ratio",
+            "title": "Displays images with incorrect aspect ratio",
+            "display": ""
+          },
+          {
+            "id": "meta-description",
+            "title": "Document does not have a meta description",
+            "display": ""
+          },
+          {
+            "id": "crawlable-anchors",
+            "title": "Links are not crawlable",
+            "display": ""
+          }
+        ]
+      },
+      "checks": {
+        "desktop": {
+          "consoleErrors": [],
+          "overflowX": 0,
+          "hiddenBeforeScroll": {
+            "hidden": 56,
+            "total": 61
+          }
+        },
+        "mobile": {
+          "consoleErrors": [],
+          "overflowX": 0,
+          "hiddenBeforeScroll": {
+            "hidden": 56,
+            "total": 61
+          }
+        },
+        "hiddenBeforeScroll_reducedMotion": {
+          "hidden": 56,
+          "total": 61
+        },
+        "hiddenBeforeScroll_noJs": {
+          "hidden": 0,
+          "total": 61
+        }
+      }
+    },
+    "after": {
+      "url": "/after/index.html",
+      "mobile": {
+        "median": {
+          "performance": 99,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100,
+          "lcp": 1731.206224145617,
+          "fcp": 1568.206224145617,
+          "tbt": 44.551556036404236,
+          "cls": 0,
+          "si": 1568.206224145617,
+          "bytes": 162807,
+          "requests": 9
+        },
+        "runs": [
+          {
+            "performance": 99,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100,
+            "lcp": 1733.9761362241607,
+            "fcp": 1518.9761362241604,
+            "tbt": 50.48806811208033,
+            "cls": 0,
+            "si": 1518.9761362241604,
+            "bytes": 162807,
+            "requests": 9
+          },
+          {
+            "performance": 99,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100,
+            "lcp": 1729.6633196936573,
+            "fcp": 1575.6633196936573,
+            "tbt": 36.66582992341432,
+            "cls": 0,
+            "si": 1575.6633196936573,
+            "bytes": 162807,
+            "requests": 9
+          },
+          {
+            "performance": 99,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100,
+            "lcp": 1731.206224145617,
+            "fcp": 1568.206224145617,
+            "tbt": 44.551556036404236,
+            "cls": 0,
+            "si": 1568.206224145617,
+            "bytes": 162807,
+            "requests": 9
+          }
+        ],
+        "failing": [
+          {
+            "id": "image-delivery-insight",
+            "title": "Improve image delivery",
+            "display": "Est savings of 17 KiB"
+          },
+          {
+            "id": "network-dependency-tree-insight",
+            "title": "Network dependency tree",
+            "display": ""
+          }
+        ]
+      },
+      "desktop": {
+        "median": {
+          "performance": 100,
+          "accessibility": 100,
+          "best-practices": 100,
+          "seo": 100,
+          "lcp": 426.3635620176142,
+          "fcp": 378.3635620176142,
+          "tbt": 0,
+          "cls": 0,
+          "si": 378.3635620176142,
+          "bytes": 197313,
+          "requests": 10
+        },
+        "runs": [
+          {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100,
+            "lcp": 425.8376734095567,
+            "fcp": 375.8376734095567,
+            "tbt": 0,
+            "cls": 0,
+            "si": 375.8376734095567,
+            "bytes": 197313,
+            "requests": 10
+          },
+          {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100,
+            "lcp": 426.3635620176142,
+            "fcp": 378.3635620176142,
+            "tbt": 0,
+            "cls": 0,
+            "si": 378.3635620176142,
+            "bytes": 197313,
+            "requests": 10
+          },
+          {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100,
+            "lcp": 429.1244219242118,
+            "fcp": 380.29953753936945,
+            "tbt": 0,
+            "cls": 0,
+            "si": 380.29953753936945,
+            "bytes": 197313,
+            "requests": 10
+          }
+        ],
+        "failing": [
+          {
+            "id": "image-delivery-insight",
+            "title": "Improve image delivery",
+            "display": "Est savings of 12 KiB"
+          },
+          {
+            "id": "network-dependency-tree-insight",
+            "title": "Network dependency tree",
+            "display": ""
+          },
+          {
+            "id": "uses-responsive-images",
+            "title": "Properly size images",
+            "display": "Est savings of 12 KiB"
+          }
+        ]
+      },
+      "checks": {
+        "desktop": {
+          "consoleErrors": [],
+          "overflowX": 0,
+          "hiddenBeforeScroll": {
+            "hidden": 64,
+            "total": 77
+          }
+        },
+        "mobile": {
+          "consoleErrors": [],
+          "overflowX": 0,
+          "hiddenBeforeScroll": {
+            "hidden": 64,
+            "total": 77
+          }
+        },
+        "hiddenBeforeScroll_reducedMotion": {
+          "hidden": 0,
+          "total": 77
+        },
+        "hiddenBeforeScroll_noJs": {
+          "hidden": 0,
+          "total": 77
+        }
+      }
+    }
+  }
+}

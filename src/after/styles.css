@@ -1,0 +1,356 @@
+/* Self-hosted Ubuntu (latin subset, only the weights the page uses). */
+@font-face {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("./assets/fonts/ubuntu-latin-400.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("./assets/fonts/ubuntu-latin-500.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Ubuntu";
+    font-style: normal;
+    font-weight: 600 700;
+    font-display: swap;
+    src: url("./assets/fonts/ubuntu-latin-700.woff2") format("woff2");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --bg-color: #000;
+    --btn-color: #fdfdfd;
+    --btn-bg: #7e22ce;
+    --primary-text-color: #7e22ce;
+    --input-hover-bd-color: #a855f7;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: "Ubuntu", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:focus-visible {
+    outline: 2px solid #c084fc;
+    outline-offset: 3px;
+}
+
+.bi {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+    flex-shrink: 0;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100px;
+    z-index: 100;
+    padding: 8px 14px;
+    border-radius: 6px;
+    background: #fff;
+    color: #000;
+}
+.skip-link:focus {
+    top: 44px;
+}
+
+.demo-bar {
+    position: relative;
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    height: 36px;
+    padding: 0 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: #d8b4fe;
+    background: #12051f;
+    border-bottom: 1px solid #2e1065;
+    text-align: center;
+}
+.demo-bar a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+header {
+    color: #b1b1b1;
+}
+
+header > .collapsible-header {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    background-color: inherit;
+    place-content: center;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+.header-links {
+    display: flex;
+    align-items: center;
+    min-width: fit-content;
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+.header-links:hover {
+    color: #fff;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #d7d7d7 18%, #888 71%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-img-bg-grad {
+    background: linear-gradient(90deg, #7e22ce91 8%, #625aafae 31%, #7badbbbc 76%, #54d2d0ca 89%);
+    filter: blur(50px);
+    opacity: 0.5;
+}
+
+/* The hero dashboard starts tilted and straightens as the page scrolls.
+   Pure CSS (scroll-driven animation); browsers without support, and users who
+   prefer reduced motion, get the flat image. */
+@media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+        #dashboard {
+            animation: dashboard-straighten linear both;
+            animation-timeline: scroll(root);
+            animation-range: 0 45vh;
+        }
+        #dashboard:hover {
+            box-shadow: 0 15px 25px -5px #7e22ceaa;
+        }
+    }
+}
+@keyframes dashboard-straighten {
+    from {
+        transform: perspective(1400px) scale(0.95) rotateX(14deg);
+        box-shadow: none;
+    }
+    to {
+        transform: none;
+        box-shadow: 0 15px 25px -5px #7e22ceaa;
+    }
+}
+
+.border-gradient {
+    background: linear-gradient(180deg, #dbd7d5 35%, #d6d3e900 71%);
+    padding: 2px;
+    border-radius: 10px;
+}
+.border-gradient > div {
+    background-color: var(--bg-color);
+    border-radius: inherit;
+}
+
+.btn {
+    padding: 10px 15px;
+    width: max-content;
+    border-radius: 5px;
+    color: var(--btn-color);
+    background-color: var(--btn-bg);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.input {
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+    min-width: 100px;
+    border: 1px solid #818080;
+}
+.input:focus {
+    border-color: var(--input-hover-bd-color) !important;
+    outline: none;
+}
+
+.feature-card {
+    @apply tw-flex tw-min-h-[200px] tw-w-[450px] tw-gap-8 tw-rounded-xl tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-8 max-md:tw-w-[320px] max-md:tw-gap-5 max-md:tw-p-6;
+}
+
+.check-title {
+    @apply tw-flex tw-items-center tw-gap-2 tw-text-xl tw-font-medium;
+}
+.check-title .bi {
+    font-size: 1.5rem;
+    color: #c084fc;
+}
+
+.team-card {
+    @apply tw-flex tw-h-fit tw-w-[350px] tw-break-inside-avoid tw-flex-col tw-gap-4 tw-rounded-lg tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-4 max-lg:tw-w-[320px];
+}
+.team-badge {
+    @apply tw-flex tw-h-[50px] tw-w-[50px] tw-shrink-0 tw-items-center tw-justify-center tw-rounded-full tw-text-xl;
+    color: #e9d5ff;
+    background: radial-gradient(circle at 30% 30%, #7e22ce 0%, #3b0764 70%);
+}
+
+.price-card {
+    @apply tw-flex tw-w-[380px] tw-flex-col tw-place-items-center tw-gap-2 tw-rounded-lg tw-bg-secondary tw-p-8 tw-shadow-xl max-lg:tw-w-[320px];
+}
+.price-list {
+    @apply tw-mt-4 tw-flex tw-flex-col tw-gap-2 tw-text-center tw-text-lg tw-text-gray-200;
+}
+.plan-flag {
+    @apply tw-absolute tw-rounded-full tw-px-3 tw-py-1 tw-text-xs tw-font-medium tw-uppercase tw-tracking-wider;
+    top: -13px;
+    color: #fff;
+    background: var(--btn-bg);
+}
+
+.article-card {
+    @apply tw-flex tw-min-h-[400px] tw-w-[400px] tw-flex-col tw-gap-4 tw-rounded-lg tw-p-4 max-lg:tw-w-[300px];
+}
+.article-card img {
+    transition: transform 0.3s;
+}
+.article-card:hover img {
+    transform: scale(1.04);
+}
+
+.footer-link {
+    color: #c7c6c6;
+    transition: color 0.3s;
+}
+.footer-link:hover {
+    color: #fff;
+}
+
+/* FAQ accordion: real buttons, collapsed answers are hidden from keyboard and screen readers. */
+.faq {
+    @apply tw-w-full tw-rounded-md tw-border-[1px] tw-border-solid tw-border-[#1F2123] tw-bg-[#080808];
+}
+.faq-accordion {
+    @apply tw-flex tw-w-full tw-items-center tw-text-xl max-md:tw-text-lg;
+    color: #f2f2f2;
+    cursor: pointer;
+    padding: 15px 18px;
+    text-align: left;
+}
+.faq-icon {
+    margin-left: auto;
+    padding-left: 12px;
+    transition: transform 0.3s;
+}
+.faq.open .faq-icon {
+    transform: rotate(45deg);
+}
+.faq .content {
+    padding: 0 18px;
+    color: #e4e4e4;
+    overflow: hidden;
+    max-height: 0;
+    visibility: hidden;
+    transition: max-height 0.4s, padding 0.4s, visibility 0s 0.4s;
+}
+.faq.open .content {
+    max-height: 20rem;
+    padding: 20px 18px;
+    visibility: visible;
+    transition: max-height 0.4s, padding 0.4s;
+}
+html:not(.js) .faq .content {
+    max-height: none;
+    padding: 0 18px 18px;
+    visibility: visible;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+/* Scroll reveal: content is visible by default. Only when JS runs and the user
+   has not asked for reduced motion is it hidden until it enters the viewport. */
+@media (prefers-reduced-motion: no-preference) {
+    .js .reveal-up {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .js .reveal-up.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media not all and (min-width: 1024px) {
+    header .collapsible-header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        flex-direction: column;
+        height: 100vh;
+        height: 100dvh;
+        width: 0;
+        opacity: 0;
+        visibility: hidden;
+        justify-content: space-between;
+        padding: 5% 5px;
+        place-items: end;
+        background-color: #040404;
+        color: #fff;
+        overflow-y: auto;
+        box-shadow: 3px 0 3px 2px #9f9f9f;
+        transition: width 0.3s ease, opacity 0.3s ease, visibility 0s 0.3s;
+    }
+    header .collapsible-header.is-open {
+        width: 60vw;
+        opacity: 1;
+        visibility: visible;
+        transition: width 0.3s ease, opacity 0.3s ease;
+    }
+    .header-links {
+        color: #fff;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

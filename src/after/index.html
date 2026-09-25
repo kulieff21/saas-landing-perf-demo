@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dashdark: revenue and product analytics for SaaS teams (demo)</title>
+        <meta
+            name="description"
+            content="Dashdark is a fictional SaaS analytics product, built as a portfolio demo: signups, subscriptions and revenue in one dashboard. Page optimized from the open-source SaaSyDark template."
+        />
+        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="./assets/img/favicon-32.png" sizes="32x32" type="image/png" />
+        <link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png" />
+
+        <meta property="og:title" content="Dashdark: revenue and product analytics (portfolio demo)" />
+        <meta
+            property="og:description"
+            content="A fictional SaaS landing page, rebuilt from an open-source template for speed, accessibility and SEO."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="./assets/img/og.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+
+        <link rel="preload" href="./assets/fonts/ubuntu-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="./assets/fonts/ubuntu-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+
+        <style>/*inline-css*/</style>
+    </head>
+    <body class="tw-flex tw-min-h-[100vh] tw-flex-col tw-bg-black tw-text-white">
+        <a href="#main" class="skip-link">Skip to content</a>
+
+        <div class="demo-bar">
+            <span>Portfolio demo<span class="max-md:tw-hidden">: Dashdark is a fictional product</span><span class="md:tw-hidden"> · fictional product</span></span>
+            <a href="../"><span><span class="max-md:tw-hidden">See the before/after</span><span class="md:tw-hidden">Before/after</span> case study</span>{{icon arrow-right}}</a>
+        </div>
+
+        <header
+            class="tw-absolute tw-top-[36px] tw-z-20 tw-flex tw-h-[60px] tw-w-full tw-bg-opacity-0 tw-px-[5%] lg:tw-justify-around"
+        >
+            <a class="tw-h-[50px] tw-w-[50px] tw-p-[4px]" href="#main" aria-label="Dashdark home">
+                {{img logo|Dashdark logo|42px|tw-h-full tw-w-full tw-object-contain|eager}}
+            </a>
+            <nav
+                class="collapsible-header animated-collapse max-lg:tw-shadow-md"
+                id="collapsed-header-items"
+                aria-label="Main"
+            >
+                <div
+                    class="tw-flex tw-h-full tw-w-max tw-gap-5 tw-text-base max-lg:tw-mt-[30px] max-lg:tw-flex-col max-lg:tw-place-items-end max-lg:tw-gap-5 lg:tw-mx-auto lg:tw-place-items-center"
+                >
+                    <a class="header-links" href="#features">Features</a>
+                    <a class="header-links" href="#reports">Reports</a>
+                    <a class="header-links" href="#pricing">Pricing</a>
+                    <a class="header-links" href="#blog">Blog</a>
+                    <a class="header-links" href="#faq">FAQ</a>
+                </div>
+                <div
+                    class="tw-mx-4 tw-flex tw-place-items-center tw-gap-[20px] tw-text-base max-md:tw-w-full max-md:tw-flex-col max-md:tw-place-content-center"
+                >
+                    <a
+                        href="#signup"
+                        class="tw-inline-flex tw-items-center tw-gap-2 tw-rounded-full tw-bg-white tw-px-3 tw-py-2 tw-text-black tw-transition-transform tw-duration-[0.3s] hover:tw-translate-x-2"
+                    >
+                        <span>Start free trial</span>
+                        {{icon arrow-right}}
+                    </a>
+                </div>
+            </nav>
+            <button
+                class="menu-btn tw-absolute tw-right-3 tw-top-2 tw-z-50 tw-text-3xl tw-text-white lg:tw-hidden"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="collapsed-header-items"
+                id="collapse-btn"
+            >
+                <span class="icon-open">{{icon list}}</span>
+                <span class="icon-close" hidden>{{icon x-lg}}</span>
+            </button>
+        </header>
+
+        <main id="main">
+            <section
+                class="hero-section tw-relative tw-flex tw-min-h-[100vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-overflow-hidden max-md:tw-min-h-0 max-md:tw-pt-[88px]"
+                id="hero-section"
+            >
+                <div
+                    class="tw-flex tw-h-full tw-min-h-[100vh] tw-w-full tw-flex-col tw-place-content-center tw-gap-6 tw-p-[5%] max-xl:tw-place-items-center max-lg:tw-p-4 max-md:tw-min-h-0"
+                >
+                    <div class="tw-flex tw-flex-col tw-place-content-center tw-items-center">
+                        <h1
+                            class="gradient-text tw-text-center tw-text-6xl tw-font-semibold tw-uppercase tw-leading-[80px] max-lg:tw-text-4xl max-md:tw-leading-snug"
+                        >
+                            <span>Every metric</span>
+                            <br />
+                            <span>that moves revenue</span>
+                        </h1>
+                        <p
+                            class="tw-mt-10 tw-max-w-[520px] tw-p-2 tw-text-center tw-text-gray-300 max-lg:tw-max-w-full"
+                        >
+                            Dashdark pulls signups, subscriptions and revenue into one live
+                            dashboard, so your team stops exporting spreadsheets and starts
+                            making decisions.
+                        </p>
+
+                        <div class="tw-mt-10 tw-flex tw-place-items-center tw-gap-4">
+                            <a
+                                class="btn tw-bg-[#7e22ce] tw-shadow-lg tw-shadow-primary tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.03]"
+                                href="#signup"
+                            >
+                                Start free trial
+                            </a>
+                            <a
+                                class="btn tw-flex tw-gap-2 !tw-bg-black !tw-text-white tw-transition-colors tw-duration-[0.3s] hover:!tw-bg-white hover:!tw-text-black"
+                                href="#features"
+                            >
+                                {{icon play-circle-fill}}
+                                <span>See how it works</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div
+                        class="tw-relative tw-mt-8 tw-flex tw-w-full tw-place-content-center tw-place-items-center"
+                        id="dashboard-container"
+                    >
+                        <div
+                            class="tw-relative tw-z-10 tw-max-w-[80%] tw-overflow-hidden tw-rounded-xl tw-bg-transparent max-md:tw-max-w-full"
+                            id="dashboard"
+                        >
+                            {{img dashboard|Dashdark dashboard showing pageviews, monthly users, sign-ups, subscriptions and total revenue|(max-width: 767px) 100vw, 80vw|tw-h-full tw-w-full tw-object-cover tw-opacity-90 max-lg:tw-object-contain|hero}}
+                        </div>
+
+                        <div
+                            class="hero-img-bg-grad tw-absolute tw-left-[20%] tw-top-5 tw-h-[200px] tw-w-[200px]"
+                            aria-hidden="true"
+                        ></div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="tw-relative tw-flex tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
+                aria-labelledby="benefits-title"
+            >
+                <div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
+                    <div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
+                        <h2
+                            id="benefits-title"
+                            class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-3xl"
+                        >
+                            Key benefits
+                        </h2>
+                    </div>
+                    <div
+                        class="tw-mt-6 tw-flex tw-max-w-[1240px] tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col"
+                    >
+                        <div
+                            class="reveal-up tw-flex tw-min-h-[400px] tw-w-[380px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-min-h-0 max-md:tw-w-[320px]"
+                        >
+                            <div class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-h-[150px]">
+                                <div class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+                                    <span class="tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl">{{icon rocket-takeoff-fill}}</span>
+                                </div>
+                            </div>
+                            <div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+                                <h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+                                    Live in an afternoon
+                                </h3>
+                                <p class="tw-text-gray-300">
+                                    Connect your billing provider and product database; the first
+                                    dashboard builds itself.
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="reveal-up tw-flex tw-min-h-[400px] tw-w-[380px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-min-h-0 max-md:tw-w-[320px]"
+                        >
+                            <div class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-h-[150px]">
+                                <div class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+                                    <span class="tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl">{{icon layout-sidebar-inset}}</span>
+                                </div>
+                            </div>
+                            <div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+                                <h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+                                    One screen, not ten tabs
+                                </h3>
+                                <p class="tw-text-gray-300">
+                                    Revenue, usage and acquisition side by side, with one date
+                                    range across every chart.
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            class="reveal-up tw-flex tw-min-h-[400px] tw-w-[380px] tw-flex-col tw-gap-3 tw-text-center max-md:tw-min-h-0 max-md:tw-w-[320px]"
+                        >
+                            <div class="border-gradient tw-h-[200px] tw-w-full tw-overflow-hidden max-md:tw-h-[150px]">
+                                <div class="tw-flex tw-h-full tw-w-full tw-place-content-center tw-place-items-end tw-p-2">
+                                    <span class="tw-text-7xl tw-text-gray-200 max-md:tw-text-5xl">{{icon lightning-charge-fill}}</span>
+                                </div>
+                            </div>
+                            <div class="tw-flex tw-flex-col tw-gap-4 tw-p-2">
+                                <h3 class="tw-mt-8 tw-text-2xl tw-font-normal max-md:tw-text-xl">
+                                    Answers in seconds
+                                </h3>
+                                <p class="tw-text-gray-300">
+                                    Filter any chart by plan, country or signup cohort without
+                                    writing a line of SQL.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="features"
+                class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
+                aria-labelledby="features-title"
+            >
+                <div class="tw-mt-8 tw-flex tw-flex-col tw-place-items-center tw-gap-5">
+                    <div class="reveal-up tw-mt-5 tw-flex tw-flex-col tw-gap-3 tw-text-center">
+                        <h2
+                            id="features-title"
+                            class="tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-2xl"
+                        >
+                            Everything a growing SaaS needs to measure
+                        </h2>
+                    </div>
+                    <div
+                        class="tw-mt-6 tw-flex tw-max-w-[80%] tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col max-md:tw-max-w-full"
+                    >
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl">{{icon globe}}</div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Multi-currency revenue</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Normalize MRR across currencies and break it down by country
+                                    or plan.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl">{{icon bar-chart-fill}}</div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Cohort retention</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    See how each signup month retains, expands or churns over
+                                    time.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl">{{icon cloud-fill}}</div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Daily snapshots</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Every metric is versioned daily, so last quarter's numbers
+                                    never change behind your back.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl">{{icon fingerprint}}</div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">SSO and two-factor</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Enforce single sign-on and two-factor login for the whole
+                                    workspace.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl">{{icon sliders}}</div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Warehouse sync</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Push clean metrics to your data warehouse, or pull custom
+                                    events back in.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="reveal-up feature-card">
+                            <div class="tw-text-4xl max-md:tw-text-2xl">{{icon gear-fill}}</div>
+                            <div class="tw-flex tw-flex-col tw-gap-4">
+                                <h3 class="tw-text-2xl max-md:tw-text-xl">Custom formulas</h3>
+                                <p class="tw-text-gray-300 max-md:tw-text-sm">
+                                    Define your own KPIs once and reuse them in every report.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="reports"
+                class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
+                aria-labelledby="reports-title"
+            >
+                <div
+                    class="reveal-up tw-flex tw-min-h-[60vh] tw-place-content-center tw-place-items-center tw-gap-[10%] max-lg:tw-flex-col max-lg:tw-gap-10"
+                >
+                    <div class="tw-flex">
+                        <div
+                            class="tw-max-h-[650px] tw-max-w-[850px] tw-overflow-hidden tw-rounded-lg tw-shadow-lg tw-shadow-[rgba(170,49,233,0.44)]"
+                        >
+                            {{img dash|Analytics report with revenue by plan and a weekly sign-up chart|(max-width: 1023px) 92vw, 850px|tw-h-full tw-w-full tw-object-cover|lazy}}
+                        </div>
+                    </div>
+                    <div class="tw-mt-6 tw-flex tw-max-w-[450px] tw-flex-col tw-gap-4">
+                        <h2 id="reports-title" class="tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+                            Reports your team will actually open
+                        </h2>
+
+                        <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+                            <h3 class="check-title">{{icon check-all}} Monday digests</h3>
+                            <p class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+                                A weekly summary lands in chat or email, with the biggest changes
+                                already highlighted.
+                            </p>
+                        </div>
+                        <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+                            <h3 class="check-title">{{icon check-all}} Shareable views</h3>
+                            <p class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+                                Send a read-only link to investors or the board without handing
+                                out another login.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="tw-relative tw-flex tw-min-h-[80vh] tw-w-full tw-max-w-[100vw] tw-flex-col tw-place-content-center tw-place-items-center tw-overflow-hidden tw-p-6"
+                aria-labelledby="alerts-title"
+            >
+                <div
+                    class="reveal-up tw-flex tw-min-h-[60vh] tw-place-content-center tw-place-items-center tw-gap-[10%] max-lg:tw-flex-col max-lg:tw-gap-10"
+                >
+                    <div class="tw-mt-6 tw-flex tw-max-w-[450px] tw-flex-col tw-gap-4">
+                        <h2 id="alerts-title" class="tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+                            Spot problems before they hit revenue
+                        </h2>
+
+                        <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+                            <h3 class="check-title">{{icon check-all}} Anomaly alerts</h3>
+                            <p class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+                                Get notified when signups, trials or failed payments drift outside
+                                their usual range.
+                            </p>
+                        </div>
+                        <div class="tw-mt-4 tw-flex tw-flex-col tw-gap-3">
+                            <h3 class="check-title">{{icon check-all}} Goals and targets</h3>
+                            <p class="tw-text-lg tw-text-gray-300 max-md:tw-text-base">
+                                Set a target for any metric and track progress against it in
+                                real time.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="tw-flex">
+                        <div
+                            class="tw-max-h-[650px] tw-max-w-[850px] tw-overflow-hidden tw-rounded-lg tw-shadow-lg tw-shadow-[rgba(170,49,233,0.44)]"
+                        >
+                            {{img insights|Insights panel with top products, team progress and an 80% website visitor goal|(max-width: 1023px) 92vw, 850px|tw-h-full tw-w-full tw-object-cover|lazy}}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="tw-mt-5 tw-flex tw-min-h-[80vh] tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%]"
+                aria-labelledby="teams-title"
+            >
+                <h2 id="teams-title" class="reveal-up tw-text-4xl tw-font-medium tw-text-gray-200 max-md:tw-text-2xl">
+                    Built for the whole team
+                </h2>
+                <div class="tw-mt-8 tw-gap-10 tw-space-y-8 max-md:tw-columns-1 lg:tw-columns-2 xl:tw-columns-3">
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Board-ready MRR, churn and runway numbers, without rebuilding the
+                            spreadsheet every month.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge">{{icon graph-up-arrow}}</span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Founders</h3>
+                                <span class="tw-text-gray-400">Growth and runway</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            See which features your retained cohorts use, and which ones nobody
+                            opens after week one.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge">{{icon box-seam}}</span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Product</h3>
+                                <span class="tw-text-gray-400">Adoption and retention</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Tie every acquisition channel to paid conversions, not just to
+                            signups.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge">{{icon megaphone}}</span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Growth</h3>
+                                <span class="tw-text-gray-400">Channels and funnels</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Reconcile revenue with billing, refunds and taxes in one place, down
+                            to the invoice.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge">{{icon receipt}}</span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Finance</h3>
+                                <span class="tw-text-gray-400">Revenue and billing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Find the accounts whose usage is dropping, before they reach the
+                            cancel button.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge">{{icon life-preserver}}</span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Customer success</h3>
+                                <span class="tw-text-gray-400">Health and churn risk</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal-up team-card">
+                        <p class="tw-mt-4 tw-text-gray-300">
+                            Read-only warehouse access and an API, so nobody files another
+                            "can you export this" ticket.
+                        </p>
+                        <div class="tw-flex tw-place-items-center tw-gap-3">
+                            <span class="team-badge">{{icon code-slash}}</span>
+                            <div class="tw-flex tw-flex-col tw-gap-1">
+                                <h3 class="tw-font-semibold">Engineering</h3>
+                                <span class="tw-text-gray-400">Data access</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="tw-mt-5 tw-flex tw-w-full tw-flex-col tw-place-items-center tw-p-[2%] max-lg:tw-p-4"
+                id="pricing"
+                aria-labelledby="pricing-title"
+            >
+                <h2 id="pricing-title" class="tw-text-3xl tw-font-medium tw-text-gray-300 max-md:tw-text-2xl">
+                    Simple pricing
+                </h2>
+                <div class="tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-8 max-lg:tw-flex-col">
+                    <div class="reveal-up price-card tw-border-[1px] tw-border-outlineColor">
+                        <h3 class="tw-text-lg tw-font-medium tw-text-gray-300">Starter</h3>
+                        <p>
+                            <span class="tw-text-5xl tw-font-semibold">$9</span>
+                            <span class="tw-text-2xl tw-text-gray-400">/mo</span>
+                        </p>
+                        <p class="tw-mt-3 tw-text-center tw-text-gray-300">
+                            For solo founders tracking their first revenue.
+                        </p>
+                        <hr />
+                        <ul class="price-list">
+                            <li>1 data source</li>
+                            <li>Core revenue metrics</li>
+                            <li>12 months of history</li>
+                            <li>Weekly email digest</li>
+                        </ul>
+                        <a href="#signup" class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]">
+                            Start with Starter
+                        </a>
+                    </div>
+                    <div class="reveal-up price-card tw-relative tw-border-2 tw-border-primary">
+                        <span class="plan-flag">Recommended</span>
+                        <h3 class="tw-text-lg tw-font-medium tw-text-gray-300">Growth</h3>
+                        <p>
+                            <span class="tw-text-5xl tw-font-semibold">$19</span>
+                            <span class="tw-text-2xl tw-text-gray-400">/mo</span>
+                        </p>
+                        <p class="tw-mt-3 tw-text-center tw-text-gray-300">
+                            For small teams that review metrics every week.
+                        </p>
+                        <hr />
+                        <ul class="price-list">
+                            <li>3 data sources</li>
+                            <li>Cohorts and retention</li>
+                            <li>Unlimited history</li>
+                            <li>Anomaly alerts</li>
+                        </ul>
+                        <a href="#signup" class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]">
+                            Start with Growth
+                        </a>
+                    </div>
+                    <div class="reveal-up price-card tw-border-[1px] tw-border-outlineColor">
+                        <h3 class="tw-text-lg tw-font-medium tw-text-gray-300">Scale</h3>
+                        <p>
+                            <span class="tw-text-5xl tw-font-semibold">$49</span>
+                            <span class="tw-text-2xl tw-text-gray-400">/mo</span>
+                        </p>
+                        <p class="tw-mt-3 tw-text-center tw-text-gray-300">
+                            For companies with several products and stricter security.
+                        </p>
+                        <hr />
+                        <ul class="price-list">
+                            <li>Unlimited data sources</li>
+                            <li>SSO and two-factor enforcement</li>
+                            <li>Warehouse sync</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <a href="#signup" class="btn tw-mt-8 !tw-w-full tw-transition-transform tw-duration-[0.3s] hover:tw-scale-x-[1.02]">
+                            Start with Scale
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="blog"
+                class="tw-mt-5 tw-flex tw-min-h-[80vh] tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-p-[2%] max-lg:tw-p-3"
+                aria-labelledby="blog-title"
+            >
+                <h2 id="blog-title" class="reveal-up tw-text-center tw-text-4xl tw-font-medium max-md:tw-text-2xl">
+                    From the blog
+                </h2>
+                <div class="reveal-up tw-mt-10 tw-flex tw-flex-wrap tw-place-content-center tw-gap-10 max-lg:tw-flex-col">
+                    <article class="article-card">
+                        <div class="tw-h-[250px] tw-w-full tw-overflow-hidden tw-rounded-md">
+                            {{img forest|Misty forest on a hillside|(max-width: 1023px) 300px, 400px|tw-h-full tw-w-full tw-object-cover|lazy}}
+                        </div>
+                        <h3 class="tw-mt-2 tw-text-2xl tw-font-semibold max-md:tw-text-xl">
+                            What a healthy churn curve looks like
+                        </h3>
+                        <p class="tw-text-gray-400">
+                            Why the first 90 days tell you more than the monthly average.
+                        </p>
+                    </article>
+                    <article class="article-card">
+                        <div class="tw-h-[250px] tw-w-full tw-overflow-hidden tw-rounded-md">
+                            {{img mountain|Snow-covered mountain range at dusk|(max-width: 1023px) 300px, 400px|tw-h-full tw-w-full tw-object-cover|lazy}}
+                        </div>
+                        <h3 class="tw-mt-2 tw-text-2xl tw-font-semibold max-md:tw-text-xl">
+                            MRR vs. revenue: why they differ
+                        </h3>
+                        <p class="tw-text-gray-400">
+                            Annual plans, refunds and discounts, and where each one shows up.
+                        </p>
+                    </article>
+                    <article class="article-card">
+                        <div class="tw-h-[250px] tw-w-full tw-overflow-hidden tw-rounded-md">
+                            {{img photography|Warm string lights glowing in the dark|(max-width: 1023px) 300px, 400px|tw-h-full tw-w-full tw-object-cover|lazy}}
+                        </div>
+                        <h3 class="tw-mt-2 tw-text-2xl tw-font-semibold max-md:tw-text-xl">
+                            Five numbers to show your board
+                        </h3>
+                        <p class="tw-text-gray-400">
+                            A short list that fits on one slide and survives follow-up questions.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section
+                id="faq"
+                class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%] max-md:tw-px-4"
+                aria-labelledby="faq-title"
+            >
+                <h2 id="faq-title" class="tw-text-4xl tw-font-medium tw-text-gray-300 max-md:tw-text-2xl">
+                    FAQ
+                </h2>
+                <div class="tw-mt-5 tw-flex tw-min-h-[300px] tw-w-full tw-max-w-[850px] tw-flex-col tw-gap-4">
+                    <div class="faq">
+                        <h3>
+                            <button class="faq-accordion" type="button" aria-expanded="false" aria-controls="faq-1">
+                                <span>Is Dashdark a real product?</span>
+                                <span class="faq-icon">{{icon plus}}</span>
+                            </button>
+                        </h3>
+                        <div class="content" id="faq-1">
+                            No. Dashdark is a fictional product made for a portfolio case study.
+                            This page is an optimized version of the open-source
+                            <a class="tw-underline" href="https://github.com/PaulleDemon/awesome-landing-pages">SaaSyDark template</a>
+                            (MIT license).
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <h3>
+                            <button class="faq-accordion" type="button" aria-expanded="false" aria-controls="faq-2">
+                                <span>Do I need to write SQL?</span>
+                                <span class="faq-icon">{{icon plus}}</span>
+                            </button>
+                        </h3>
+                        <div class="content" id="faq-2">
+                            No. Every chart can be filtered and grouped from the interface. SQL
+                            access is there for teams that want it.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <h3>
+                            <button class="faq-accordion" type="button" aria-expanded="false" aria-controls="faq-3">
+                                <span>Which data sources can I connect?</span>
+                                <span class="faq-icon">{{icon plus}}</span>
+                            </button>
+                        </h3>
+                        <div class="content" id="faq-3">
+                            Billing providers, product databases and web analytics. Anything else
+                            can be sent through the events API.
+                        </div>
+                    </div>
+                    <div class="faq">
+                        <h3>
+                            <button class="faq-accordion" type="button" aria-expanded="false" aria-controls="faq-4">
+                                <span>Can I cancel at any time?</span>
+                                <span class="faq-icon">{{icon plus}}</span>
+                            </button>
+                        </h3>
+                        <div class="content" id="faq-4">
+                            Yes. Plans are monthly, and you can export all of your data before you
+                            leave.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tw-mt-20 tw-flex tw-flex-col tw-place-items-center tw-gap-4">
+                    <p class="tw-text-3xl max-md:tw-text-2xl">Curious how this page was built?</p>
+                    <a
+                        href="../"
+                        class="btn !tw-rounded-full !tw-border-[1px] !tw-border-solid !tw-border-gray-300 !tw-bg-transparent tw-transition-colors tw-duration-[0.3s] hover:!tw-bg-white hover:!tw-text-black"
+                    >
+                        Read the case study
+                    </a>
+                </div>
+            </section>
+
+            <section
+                id="signup"
+                class="tw-flex tw-w-full tw-flex-col tw-place-content-center tw-place-items-center tw-gap-[10%] tw-p-[5%] tw-px-[10%] max-md:tw-px-4"
+                aria-labelledby="signup-title"
+            >
+                <form
+                    class="signup tw-flex tw-w-full tw-max-w-[80%] tw-place-content-center tw-place-items-center tw-justify-between tw-gap-3 tw-rounded-lg tw-border-[1px] tw-border-outlineColor tw-bg-secondary tw-p-6 max-md:tw-max-w-full max-md:tw-flex-col"
+                    id="signup-form"
+                    novalidate
+                >
+                    <div class="tw-flex tw-flex-col tw-gap-1">
+                        <h2 id="signup-title" class="tw-text-3xl tw-text-gray-300 max-md:tw-text-xl">
+                            Start a 14-day free trial
+                        </h2>
+                        <p class="tw-text-gray-300">No credit card. Demo form: nothing is sent.</p>
+                        <p class="form-status tw-text-sm" role="status" aria-live="polite"></p>
+                    </div>
+
+                    <div class="tw-flex tw-h-[60px] tw-place-items-center tw-gap-2 tw-p-2 max-md:tw-w-full">
+                        <label for="signup-email" class="sr-only">Work email</label>
+                        <input
+                            id="signup-email"
+                            name="email"
+                            type="email"
+                            autocomplete="email"
+                            required
+                            class="input tw-h-full tw-w-full !tw-border-gray-600 tw-p-2"
+                            placeholder="you@company.com"
+                        />
+                        <button
+                            type="submit"
+                            class="btn tw-shrink-0 !tw-rounded-full !tw-border-[1px] !tw-border-solid !tw-border-gray-300 !tw-bg-transparent tw-transition-colors tw-duration-[0.3s] hover:!tw-bg-white hover:!tw-text-black"
+                        >
+                            Sign up
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer
+            class="tw-mt-auto tw-flex tw-w-full tw-place-content-around tw-gap-3 tw-p-[5%] tw-px-[10%] tw-text-white max-md:tw-flex-col max-md:tw-gap-10"
+        >
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-place-items-center tw-gap-6 max-md:tw-w-full">
+                {{img logo|Dashdark|120px|tw-w-[120px] tw-h-[120px]|lazy}}
+                <p class="tw-text-center tw-text-gray-400">
+                    Dashdark is a fictional product.<br />
+                    Page based on the SaaSyDark template (MIT).
+                </p>
+            </div>
+
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+                <h2 class="tw-text-3xl max-md:tw-text-xl">Product</h2>
+                <ul class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
+                    <li><a href="#features" class="footer-link">Features</a></li>
+                    <li><a href="#reports" class="footer-link">Reports</a></li>
+                    <li><a href="#pricing" class="footer-link">Pricing</a></li>
+                    <li><a href="#faq" class="footer-link">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div class="tw-flex tw-h-full tw-w-[250px] tw-flex-col tw-gap-4">
+                <h2 class="tw-text-3xl max-md:tw-text-xl">About this demo</h2>
+                <ul class="tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
+                    <li><a href="../" class="footer-link">Before/after case study</a></li>
+                    <li><a href="../before/" class="footer-link">Original template</a></li>
+                    <li><a href="https://github.com/PaulleDemon/awesome-landing-pages" class="footer-link">Template source</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <script src="./main.js" defer></script>
+    </body>
+</html>
