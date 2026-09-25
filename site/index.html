@@ -12,8 +12,10 @@
         <link rel="icon" href="./after/assets/img/favicon-32.png" sizes="32x32" type="image/png" />
         <meta property="og:title" content="SaaS landing page: 67 → 99 on mobile Lighthouse" />
         <meta property="og:description" content="Same design, 89% lighter. A before/after front-end performance case study." />
+        <link rel="canonical" href="https://kulieff21.github.io/saas-landing-perf-demo/" />
         <meta property="og:type" content="article" />
-        <meta property="og:image" content="./case-assets/after-desktop-1350.webp" />
+        <meta property="og:url" content="https://kulieff21.github.io/saas-landing-perf-demo/" />
+        <meta property="og:image" content="https://kulieff21.github.io/saas-landing-perf-demo/after/assets/img/og.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="preload" href="./after/assets/fonts/ubuntu-latin-700.woff2" as="font" type="font/woff2" crossorigin />
         <link rel="preload" href="./after/assets/fonts/ubuntu-latin-400.woff2" as="font" type="font/woff2" crossorigin />
@@ -422,14 +424,14 @@
                                 <thead>
                                     <tr><th scope="col">Mobile metric</th><th scope="col">Original</th><th scope="col">Optimized</th><th scope="col">Change</th></tr>
                                 </thead>
-                                <tbody><tr><td>First Contentful Paint</td><td>4.2 s</td><td class="after">1.6 s</td><td class="delta">−62%</td></tr><tr><td>Largest Contentful Paint</td><td>6.7 s</td><td class="after">1.7 s</td><td class="delta">−74%</td></tr><tr><td>Speed Index</td><td>4.2 s</td><td class="after">1.6 s</td><td class="delta">−62%</td></tr><tr><td>Total Blocking Time</td><td>0 ms</td><td class="after">45 ms</td><td class="delta worse">+45 ms</td></tr><tr><td>Cumulative Layout Shift</td><td>0.005</td><td class="after">0.000</td><td class="delta">—</td></tr><tr><td>Transferred on load</td><td>1415 KB</td><td class="after">159 KB</td><td class="delta">−89%</td></tr><tr><td>Requests</td><td>32</td><td class="after">9</td><td class="delta">−72%</td></tr></tbody>
+                                <tbody><tr><td>First Contentful Paint</td><td>4.2 s</td><td class="after">1.6 s</td><td class="delta">−63%</td></tr><tr><td>Largest Contentful Paint</td><td>6.7 s</td><td class="after">1.7 s</td><td class="delta">−74%</td></tr><tr><td>Speed Index</td><td>4.2 s</td><td class="after">1.6 s</td><td class="delta">−63%</td></tr><tr><td>Total Blocking Time</td><td>0 ms</td><td class="after">49 ms</td><td class="delta worse">+49 ms</td></tr><tr><td>Cumulative Layout Shift</td><td>0.006</td><td class="after">0.000</td><td class="delta">—</td></tr><tr><td>Transferred on load</td><td>1415 KB</td><td class="after">159 KB</td><td class="delta">−89%</td></tr><tr><td>Requests</td><td>32</td><td class="after">9</td><td class="delta">−72%</td></tr></tbody>
                             </table>
                         </div>
                     </div>
 
                     <div class="bytes" aria-label="Where the bytes go on first load, mobile">
                         <h3>Where the bytes go on first load</h3>
-                        <div class="bytes-row"><span class="who">Original</span><div class="bar"><span style="width:75.36%;--c:#a855f7" data-label="Images 1066 KB"></span><span style="width:15.14%;--c:#54d2d0" data-label="Fonts 214 KB"></span><span style="width:3.18%;--c:#ffa400" data-label="JavaScript 45 KB"></span><span style="width:2.23%;--c:#f472b6" data-label="CSS 32 KB"></span><span style="width:3.74%;--c:#e4e4e7" data-label="HTML 53 KB"></span><span style="width:0.34%;--c:#52525b" data-label="Other 5 KB"></span></div><span class="total">1415 KB</span></div><div class="bytes-row"><span class="who">Optimized</span><div class="bar"><span style="width:2.48%;--c:#a855f7" data-label="Images 35 KB"></span><span style="width:2.79%;--c:#54d2d0" data-label="Fonts 39 KB"></span><span style="width:0.21%;--c:#ffa400" data-label="JavaScript 3 KB"></span><span style="width:5.65%;--c:#e4e4e7" data-label="HTML 80 KB"></span><span style="width:0.11%;--c:#52525b" data-label="Other 1 KB"></span></div><span class="total">159 KB</span></div>
+                        <div class="bytes-row"><span class="who">Original</span><div class="bar"><span style="width:75.36%;--c:#a855f7" data-label="Images 1066 KB"></span><span style="width:15.14%;--c:#54d2d0" data-label="Fonts 214 KB"></span><span style="width:3.18%;--c:#ffa400" data-label="JavaScript 45 KB"></span><span style="width:2.23%;--c:#f472b6" data-label="CSS 32 KB"></span><span style="width:3.74%;--c:#e4e4e7" data-label="HTML 53 KB"></span><span style="width:0.34%;--c:#52525b" data-label="Other 5 KB"></span></div><span class="total">1415 KB</span></div><div class="bytes-row"><span class="who">Optimized</span><div class="bar"><span style="width:2.48%;--c:#a855f7" data-label="Images 35 KB"></span><span style="width:2.79%;--c:#54d2d0" data-label="Fonts 39 KB"></span><span style="width:0.21%;--c:#ffa400" data-label="JavaScript 3 KB"></span><span style="width:5.67%;--c:#e4e4e7" data-label="HTML 80 KB"></span><span style="width:0.11%;--c:#52525b" data-label="Other 1 KB"></span></div><span class="total">159 KB</span></div>
                         <p class="bytes-hint" aria-hidden="true"></p>
                         <div class="bytes-legend"><span style="--c:#a855f7">Images 1066 → 35 KB</span><span style="--c:#54d2d0">Fonts 214 → 39 KB</span><span style="--c:#ffa400">JavaScript 45 → 3 KB</span><span style="--c:#f472b6">CSS 32 → 0 KB</span><span style="--c:#e4e4e7">HTML 53 → 80 KB</span><span style="--c:#52525b">Other 5 → 1 KB</span></div>
                     </div>

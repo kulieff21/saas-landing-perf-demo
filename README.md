@@ -1,6 +1,10 @@
 # SaaS landing page: before/after performance fix (demo)
 
-A portfolio case study by **Elmar Guliyev**. I took an open-source SaaS landing template, measured it exactly as it
+A portfolio case study by **Elmar Guliyev**.
+
+**Live:** [case study](https://kulieff21.github.io/saas-landing-perf-demo/) ·
+[optimized page](https://kulieff21.github.io/saas-landing-perf-demo/after/) ·
+[original template](https://kulieff21.github.io/saas-landing-perf-demo/before/) I took an open-source SaaS landing template, measured it exactly as it
 ships, then fixed what was slowing it down without changing how it looks.
 
 **Dashdark is a fictional product.** The page copy was written for this demo because the
@@ -19,7 +23,7 @@ Both versions served by the same local static server.
 | SEO | 82 | **100** |
 | Largest Contentful Paint | 6.7 s | **1.7 s** |
 | First Contentful Paint | 4.2 s | **1.6 s** |
-| Total Blocking Time | 0 ms | 45 ms |
+| Total Blocking Time | 0 ms | 49 ms |
 | Transferred on load | 1415 KB | **159 KB** |
 | Requests | 32 | **9** |
 
