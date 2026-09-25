@@ -30,6 +30,8 @@ Both versions served by the same local static server.
 Desktop: Performance 97 → 100, Best practices 96 → 100, SEO 82 → 100.
 Full numbers, per-run values and the failing audits are in [`results/summary.json`](results/summary.json).
 
+**Live check** (GitHub Pages, gzip and CDN on, 2026-09-25, 3 runs, mobile): Performance 69 → **96** (runs 99, 95, 96), LCP 5.2 s → **1.6 s**, 1332 KB → **93 KB** transferred. Raw data in [`results/live/`](results/live/summary.json).
+
 Mobile scores move a few points between sessions (the original measured 47–67 across all
 runs so far); the gap between the two versions does not.
 
